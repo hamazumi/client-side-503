@@ -1,7 +1,7 @@
 import { useState } from "react"
 import axios from 'axios'
 import jwt from "jsonwebtoken"
-import { Redirect } from "react-router-dom"
+import { Redirect, Link } from "react-router-dom"
 import Profile from "./Profile"
 import {Form, Button, Container, Row, Col, Jumbotron} from 'react-bootstrap'
 
@@ -60,7 +60,7 @@ export default function Register(props) {
     if(props.currentUser) return <Redirect to='/profile' component={Profile} currentUser={props.currentUser} />
     return(
         <div>
-             <Container>
+             <Container className="mt-5">
            <Row>
                <Col md={{span: 7, offset: 3}}>
                    <Jumbotron>
@@ -100,7 +100,7 @@ export default function Register(props) {
                                <Button type='submit' className='mt-5 mb-3'>Sign up</Button>
                                <Row>
                                    <Col>
-                                   <p>Already have an account? Log in</p>
+                                   <p>Already have an account? <Link to='/login'>Log in</Link></p>
                                    </Col>
                                </Row>
                                
