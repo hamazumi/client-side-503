@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+.textboxSearch{
+  height: 15vh;
+  /* width: 60vw; */
+  overflow: hidden scroll;
+  /* overflow-y: hidden; Hide vertical scrollbar */
+  
+
+
+}

@@ -24,7 +24,7 @@ export default function Welcome() {
     
       
       const filterParks = parkData.filter((park) => {
-          return park.fullName.toString().toLowerCase().includes(search.toString().toLowerCase()) 
+          return park.states.toString().toLowerCase().includes(search.toString().toLowerCase()) 
           console.log("test!!!!!!!!",search)
           
         })
@@ -36,14 +36,17 @@ export default function Welcome() {
         <div>
             <form>
                 <h1>Search for Parks in your State!</h1>
-                <input type="text" id="search" placeholder="Ex: FL, CA" onChange={e => setSearch(e.target.value)}/>
+                <input maxLength="2" type="text" id="search" placeholder="Ex: FL, CA" onChange={e => setSearch(e.target.value)}/>
                 <br />
                 <input type="submit" onSubmit={renderParks} />
 
             </form>
-            <ul>
-                {renderParks}
-            </ul>
+            <div className="textboxSearch">
+
+                <ul>
+                    {renderParks}
+                </ul>
+            </div>
         </div>
         
     )
