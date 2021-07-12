@@ -23,11 +23,9 @@ export default function Welcome() {
 
     
       
-      const filterParks = parkData.filter((park) => {
-          return park.states.toString().toLowerCase().includes(search.toString().toLowerCase()) 
-          console.log("test!!!!!!!!",search)
-          
-        })
+    const filterParks = parkData.filter((park) => {
+        return park.states.toString().toLowerCase().includes(search.toString().toLowerCase()) 
+    })
     const renderParks = filterParks.map((park, index) => <li style={{ listStyleType: "none" }}><Link  style={{ color: "darkgreen" }}  to={`/park/${park.parkCode}`}>{park.fullName}</Link></li>)
     // <div key={index}>{park.fullName}</div>)
     
@@ -37,7 +35,7 @@ export default function Welcome() {
         <div>
             <form>
                 <h1>Search for Parks in your State!</h1>
-                <input maxLength="2" type="text" id="search" placeholder="Ex: FL, CA" onChange={e => setSearch(e.target.value)}/>
+                <input maxLength="2" style={{width: '90px'}} type="text" id="search" placeholder="Ex: FL, CA" onChange={e => setSearch(e.target.value)}/>
                 <br />
                 <br/>
                 {/* <input type="submit" onSubmit={renderParks} /> */}
