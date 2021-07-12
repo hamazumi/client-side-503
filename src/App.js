@@ -4,6 +4,8 @@ import Login from './components/Login.jsx'
 import Register from './components/Register.jsx'
 import Profile from './components/Profile.jsx'
 import Welcome from './components/Welcome.jsx'
+import ParkResult from './components/ParkResult.jsx'
+import Park from './components/Park.jsx'
 
 import {
   BrowserRouter as Router,
@@ -74,6 +76,16 @@ function App() {
           <Route 
             path="/profile"
             render={ props => currentUser ? <Profile {...props} currentUser={ currentUser } setCurrentUser={ setCurrentUser } handleLogout={handleLogout}/> : <Redirect to="/login"/> }
+          />
+
+          <Route 
+            path="/results"
+            render={ props => <ParkResult {...props} currentUser={ currentUser } setCurrentUser={ setCurrentUser } handleLogout={handleLogout}/>}
+          />
+
+          <Route 
+            path="/park"
+            render={ props => <Park {...props} currentUser={ currentUser } setCurrentUser={ setCurrentUser } handleLogout={handleLogout}/> }
           />
         </Switch>
       </div>
