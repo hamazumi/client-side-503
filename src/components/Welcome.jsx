@@ -20,7 +20,7 @@ export default function Welcome() {
         .catch((err) => console.log(err))
       }, [])
 
-    // const renderParks = parkData.map((park, index) => <div key={index}>{park.index.fullName}</div>)
+    const renderParks = parkData.map((park, index) => <div key={index}>{park.fullName}</div>)
 
 
     
@@ -33,7 +33,7 @@ export default function Welcome() {
                 <input type="submit" />
 
             </form>
-            {/* {renderParks} */}
+            {renderParks}
         </div>
         
     )
