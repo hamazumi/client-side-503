@@ -1,4 +1,3 @@
-
 const parks = [
     {
         fullName: "National Park one",
