@@ -13,14 +13,14 @@ export default function Welcome() {
     useEffect(() => {
         axios.get(`https://developer.nps.gov/api/v1/parks?park&api_key=${API_KEY}`)
         .then((response) => {
-          setParkData(response)
+          setParkData(response.data.data)
           
-          console.log("log",response)
+          console.log("log",response.data.data)
         })
         .catch((err) => console.log(err))
       }, [])
 
-
+    // const renderParks = parkData.map((park, index) => <div key={index}>{park.index.fullName}</div>)
 
 
     
@@ -33,6 +33,7 @@ export default function Welcome() {
                 <input type="submit" />
 
             </form>
+            {/* {renderParks} */}
         </div>
         
     )
