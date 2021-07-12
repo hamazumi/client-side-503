@@ -28,7 +28,7 @@ export default function Welcome() {
           console.log("test!!!!!!!!",search)
           
         })
-    const renderParks = filterParks.map((park, index) => <li><Link style={{listStyle: 'none'}} to={`/park/${park.parkCode}`}>{park.fullName}</Link></li>)
+    const renderParks = filterParks.map((park, index) => <li style={{ listStyleType: "none" }}><Link  style={{ color: "darkgreen" }}  to={`/park/${park.parkCode}`}>{park.fullName}</Link></li>)
     // <div key={index}>{park.fullName}</div>)
     
 
