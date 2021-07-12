@@ -51,7 +51,6 @@ export default function Register(props) {
         }
         
         
-        
         console.log('submit the form')
     }
 
