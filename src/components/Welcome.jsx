@@ -33,6 +33,7 @@ export default function Welcome() {
                 <input type="submit" />
 
             </form>
+            
             {renderParks}
         </div>
         
