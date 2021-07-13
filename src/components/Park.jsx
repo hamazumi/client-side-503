@@ -50,7 +50,7 @@ export default function Park(props) {
       if(indvPark){
 
           //   console.log(indvPark.images)
-            images = Object.values(indvPark.images).map((pic, index) => <img style={{width: "200px"}}  src={pic.url} alt="cool park image" />)
+            images = Object.values(indvPark.images).map((pic, index) => <img style={{width: "300px"}}  src={pic.url} alt="cool park image" />)
             activities = Object.values(indvPark.activities).map((park, index) => <span key={index}> {park.name} |</span>)
           //  console.log(typeof indvPark.activities)
           park = (
@@ -75,7 +75,7 @@ export default function Park(props) {
         <div>
            {park}
             <p>{activities}</p>
-            {images[0]}
+            {images}
             
 
            
