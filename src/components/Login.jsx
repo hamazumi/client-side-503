@@ -9,6 +9,8 @@ import {
   } from 'react-router-dom'
 import Profile from './Profile'
 
+import {Form, Button, Container, Row, Col, Jumbotron} from 'react-bootstrap'
+
 
 
 export default function Login(props) {
@@ -60,7 +62,52 @@ export default function Login(props) {
 
     return(
         <div>
-            <h3>Log in to your account</h3>
+       <Container>
+           <Row>
+               <Col md={{span: 7, offset: 3}}>
+                   <Jumbotron>
+                       <h3>Log In</h3>
+                       <Form onSubmit={handleSubmit}>
+                           <Form.Group>
+                               <Form.Row>
+                                   <Col>
+                                   <Form.Control
+                                   id='email-input'
+                                   type='email'
+                                   onChange={e => setEmail(e.target.value)}
+                                   value={email} 
+                                   placeholder="Email"></Form.Control>
+                                   </Col>
+                               </Form.Row>
+                               <Form.Row>
+                                   <Col>
+                                   <Form.Control
+                                   id='password-input'
+                                   type='password'
+                                   onChange={e => setPassword(e.target.value)}
+                                   value={password} 
+                                   placeholder="Password"></Form.Control>
+                                   </Col>
+                               </Form.Row>
+                               <Button type='submit' className='mt-5 mb-3'>Log In</Button>
+                               <Row>
+                                   <Col>
+                                   <p>Dont have an account? Sign Up</p>
+                                   </Col>
+                               </Row>
+                               
+
+                           </Form.Group>
+                       </Form>
+
+                   </Jumbotron>
+               </Col>
+           </Row>
+       </Container>
+
+            
+
+            {/* <h3>Log in to your account</h3>
             <p>{message}</p>
             <form onSubmit={handleSubmit}>
                 <label htmlFor={'email-input'}>Email: </label>
@@ -83,7 +130,7 @@ export default function Login(props) {
                     type='Submit'
                     value='Log in'
                     />
-            </form>
+            </form> */}
         </div>
     )
 }
