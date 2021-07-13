@@ -10,8 +10,13 @@ import {
   } from 'react-router-dom'
 import Profile from './Profile'
 
+import LoginImage from './login.jpg'
+
 import {Form, Button, Container, Row, Col, Jumbotron} from 'react-bootstrap'
 
+// var sectionStyle = {
+//     backgroundImage: `url(${LoginImage})`
+// }
 
 
 export default function Login(props) {
@@ -62,7 +67,6 @@ export default function Login(props) {
 
 
     return(
-        <div>
        <Container className="mt-5">
            <Row>
                <Col md={{span: 7, offset: 3}}>

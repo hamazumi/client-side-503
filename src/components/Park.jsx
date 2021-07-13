@@ -14,6 +14,8 @@ import {
     useEffect
   } from 'react'
 
+  import {Container, Row, Col} from 'react-bootstrap'
+
   let API_KEY = process.env.REACT_APP_API_KEY
 
 
@@ -52,12 +54,35 @@ export default function Park(props) {
 
     return(
         <div>
-            <h1>{indvPark.fullName}</h1>
-            <p>{indvPark.description}</p>
-            <p>{indvPark.directionsInfo}</p>
-            <p>{indvPark.directionsUrl}</p>
-            <p>{indvPark.weatherInfo}</p>
-            <p>{indvPark.url}</p>
+          <Container className="text-left">
+            <Row>
+              <Col xs={8}>
+              
+
+                
+              <h1>{indvPark.fullName}</h1>
+              <p>United States of America / {indvPark.states} / {indvPark.fullName}</p>
+              <h4>Alerts & Conditions</h4>
+              <p>{indvPark.weatherInfo}</p>
+              <h4>Description</h4>
+              <p>{indvPark.description}</p>
+              <p>{indvPark.directionsInfo}</p>
+              <p>{indvPark.directionsUrl}</p>
+              
+              <p>{indvPark.url}</p>
+              </Col>
+              <Col>
+              <h4>Basic Information</h4>
+              <h6>Fees & Passes ></h6>
+              <h6>Operating Hours ></h6>
+              <h6>Weather ></h6>
+
+              <h4>Activities/Amenities</h4>
+
+              </Col>
+            </Row>
+          </Container>
+            
            
         </div>
     )
