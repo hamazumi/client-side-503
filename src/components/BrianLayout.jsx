@@ -33,27 +33,21 @@ function App() {
 
 <div className="container-fluid border text-center align-middle" style={{height: "400px", backgroundColor: '#E0FCE6', backgroundImage:`url(${Hero})`}}> 
   <h1 className="mb-4 font-weight-bold text-white" style={{marginTop: '12%', fontSize: "48px"}}>Find your next National Park</h1>
-<Dropdown>
-  <Dropdown.Toggle variant="success" id="dropdown-basic">
-    Choose State
-  </Dropdown.Toggle>
-  <Dropdown.Menu>
-    <Dropdown.Item href="#/action-1">Alabama</Dropdown.Item>
-    <Dropdown.Item href="#/action-2">Alaska</Dropdown.Item>
-    <Dropdown.Item href="#/action-3">Arizona</Dropdown.Item>
-    <Dropdown.Item href="#/action-3">Arkansas</Dropdown.Item>
-    <Dropdown.Item href="#/action-3">California</Dropdown.Item>
-    <Dropdown.Item href="#/action-3">Colorado</Dropdown.Item>
-    <Dropdown.Item href="#/action-3">Colorado</Dropdown.Item>
-    <Dropdown.Item href="#/action-3">Connecticut</Dropdown.Item>
-    <Dropdown.Item href="#/action-3">Delaware</Dropdown.Item>
-    <Dropdown.Item href="#/action-3">Florida</Dropdown.Item>
-    <Dropdown.Item href="#/action-3">Georgia</Dropdown.Item>
-    <Dropdown.Item href="#/action-3">Hawaii</Dropdown.Item>
-    <Dropdown.Item href="#/action-3">Idaho</Dropdown.Item>
-    <Dropdown.Item href="#/action-3">Illinois</Dropdown.Item>
-  </Dropdown.Menu>
-</Dropdown>
+
+  <form action="/results">
+                    <h1>Search for Parks in your State!</h1>
+                    <input maxLength="2" style={{width: '90px'}} type="text" id="search" placeholder="Ex: FL, CA" onChange={e => setSearch(e.target.value)}/>
+                    <br/>
+                    <br/>
+                    {/* <input type="submit" onSubmit={e => props.setResults(renderParks)} /> */}
+
+                </form>
+                <div className="textboxSearch">
+
+                    <ul>
+                        {renderParks}
+                    </ul>
+                </div>
 </div>
 
 <div className="container">
