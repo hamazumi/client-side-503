@@ -111,7 +111,7 @@ function App() {
               const park = results.find(park => park.id.toString() === props.match.params.id)
               props = {...props, ...park}
               return(
-                <Park {...props} />
+                <Park {...props} results={results} setResults={setResults} />
               )
             }}
           />
