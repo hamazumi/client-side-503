@@ -41,8 +41,8 @@
   height: 15vh;
   /* width: 60vw; */
   overflow: hidden scroll;
-  /* overflow-y: hidden; Hide vertical scrollbar */
-  
+  /* overflow-y: hidden;
+  overflow-x: hidden;  */
 
 
 }
