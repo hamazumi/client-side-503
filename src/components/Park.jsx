@@ -58,6 +58,8 @@ export default function Park(props) {
             <p>{indvPark.directionsUrl}</p>
             <p>{indvPark.weatherInfo}</p>
             <p>{indvPark.url}</p>
+            <p>{indvPark.entranceFees}</p>
+            {/* <p>{indvPark.images[0].url}</p> */}
            
         </div>
     )
