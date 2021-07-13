@@ -1,6 +1,42 @@
 import React from 'react'
+import {Button, Dropdown, Card} from 'react-bootstrap'
+import axios from 'axios'
+import { useEffect, useState } from 'react';
+import FormFileInput from 'react-bootstrap/esm/FormFileInput';
+import {Link} from 'react-router-dom'
 
+
+let API_KEY = process.env.REACT_APP_API_KEY
+console.log(API_KEY)
 function HomeLayout() {
+
+
+
+    const [search, setSearch] = useState("")
+    const [parkData, setParkData] = useState([])
+    
+    useEffect(() => {
+        axios.get(`https://developer.nps.gov/api/v1/parks?limit=600&api_key=${API_KEY}`)
+        .then((response) => {
+          setParkData(response.data.data)
+          
+          console.log("log",response.data.data)
+        })
+        .catch((err) => console.log(err))
+      },[])
+
+    
+      
+    const filterParks = parkData.filter((park) => {
+        return park.states.toString().toLowerCase().includes(search.toString().toLowerCase()) 
+    })
+    const renderParks = filterParks.map((park, index) => <li style={{ listStyleType: "none" }}><Link  style={{ color: "darkgreen" }}  to={`/park/${park.parkCode}`}>{park.fullName}</Link></li>)
+    // <div key={index}>{park.fullName}</div>)
+    
+
+
+
+
 
     const stateName="Kentucky"
   
@@ -19,24 +55,20 @@ function HomeLayout() {
       </div>
     </div>
   </div>
-  
-  <div className="container border text-center align-middle" style={{height: "533px", backgroundColor: '#E0FCE6'}}> 
-  <h1 className="mb-4" style={{marginTop: '15%', }}>Find your next National Park</h1>
-  <Dropdown>
-    <Dropdown.Toggle variant="success" id="dropdown-basic">
-      Dropdown Button
-    </Dropdown.Toggle>
-  
-    <Dropdown.Menu>
-      <Dropdown.Item href="#/action-1">Alaska</Dropdown.Item>
-      <Dropdown.Item href="#/action-2">California</Dropdown.Item>
-      <Dropdown.Item href="#/action-3">Oklahoma</Dropdown.Item>
-      <Dropdown.Item href="#/action-3">State 4</Dropdown.Item>
-      <Dropdown.Item href="#/action-3">State 5</Dropdown.Item>
-    </Dropdown.Menu>
-  </Dropdown>
-  
-  </div>
+  <form action="/results">
+                <h1>Search for Parks in your State!</h1>
+                <input maxLength="2" style={{width: '90px'}} type="text" id="search" placeholder="Ex: FL, CA" onChange={e => setSearch(e.target.value)}/>
+                <br/>
+                <br/>
+                <input type="submit" onSubmit={renderParks} />
+
+            </form>
+            <div className="textboxSearch">
+
+                <ul>
+                    {renderParks}
+                </ul>
+            </div>
   
     <div className="container border">
     <div className="row border">
