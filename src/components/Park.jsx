@@ -7,6 +7,8 @@ export default function Park(props) {
     //        </div>
     //     )
     // })
+    console.log(props.match.params.id)
+    console.log(props)
 
 
    
