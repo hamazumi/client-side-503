@@ -1,4 +1,5 @@
 import './App.css';
+import axios from 'axios'
 import Navigation from './components/Navbar.jsx'
 import Login from './components/Login.jsx'
 import Register from './components/Register.jsx'
@@ -21,6 +22,8 @@ import {
 } from 'react'
 
 import jwt from 'jsonwebtoken'
+
+let API_KEY = process.env.REACT_APP_API_KEY
 
 function App() {
   // state holds user data if the user is logged in
@@ -49,6 +52,21 @@ function App() {
       setCurrentUser(null)
     }
   }
+
+  const [results, setResults] = useState([])
+
+    useEffect (() => {
+      async function getPost() {
+        try{
+          const response = await axios.get(`https://developer.nps.gov/api/v1/parks?limit=600&api_key=${API_KEY}`)
+          setResults(response.data.data)
+          console.log(response.data)
+        } catch (err) {
+          console.log(err)
+        }
+      }
+      getPost()
+    }, [])
 
   return (
     <Router>
@@ -81,13 +99,13 @@ function App() {
 
           <Route 
             path="/results"
-            render={ props => <ParkResult {...props} currentUser={ currentUser } setCurrentUser={ setCurrentUser } handleLogout={handleLogout}/>}
+            render={() => <ParkResult results={results} />}
           />
 
-          <Route 
-            path="/park"
-            render={ props => <Park {...props} currentUser={ currentUser } setCurrentUser={ setCurrentUser } handleLogout={handleLogout}/> }
-          />
+          <Route path="/park/parkCode">
+            <Park />
+          </Route>
+          
         </Switch>
       </div>
     </Router>

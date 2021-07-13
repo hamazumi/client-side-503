@@ -33,12 +33,12 @@ export default function Welcome() {
     
     return(
         <div>
-            <form>
+            <form action="/results">
                 <h1>Search for Parks in your State!</h1>
                 <input maxLength="2" style={{width: '90px'}} type="text" id="search" placeholder="Ex: FL, CA" onChange={e => setSearch(e.target.value)}/>
-                <br />
                 <br/>
-                {/* <input type="submit" onSubmit={renderParks} /> */}
+                <br/>
+                <input type="submit" onSubmit={renderParks} />
 
             </form>
             <div className="textboxSearch">
