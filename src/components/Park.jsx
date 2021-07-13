@@ -1,15 +1,7 @@
  
-export default function Park(props) {
-    // const parkInfo = props.results.map((park) => {
-    //     return(
-    //        <div>
-    //            {park.fullName}
-    //        </div>
-    //     )
-    // })
-
-
+export default function Park() {
    
+
 
     return(
         <div>

@@ -8,35 +8,19 @@ import {Link} from 'react-router-dom'
 
 let API_KEY = process.env.REACT_APP_API_KEY
 console.log(API_KEY)
-function HomeLayout() {
+function HomeLayout(props) {
 
 
 
     const [search, setSearch] = useState("")
-    const [parkData, setParkData] = useState([])
     
-    useEffect(() => {
-        axios.get(`https://developer.nps.gov/api/v1/parks?limit=600&api_key=${API_KEY}`)
-        .then((response) => {
-          setParkData(response.data.data)
-          
-          console.log("log",response.data.data)
-        })
-        .catch((err) => console.log(err))
-      },[])
 
-    
-      
-    const filterParks = parkData.filter((park) => {
+    const filterParks = props.results.filter((park) => {
         return park.states.toString().toLowerCase().includes(search.toString().toLowerCase()) 
     })
     const renderParks = filterParks.map((park, index) => <li style={{ listStyleType: "none" }}><Link  style={{ color: "darkgreen" }}  to={`/park/${park.parkCode}`}>{park.fullName}</Link></li>)
     // <div key={index}>{park.fullName}</div>)
     
-
-
-
-
 
     const stateName="Kentucky"
   
@@ -48,7 +32,7 @@ function HomeLayout() {
                 <input maxLength="2" style={{width: '90px'}} type="text" id="search" placeholder="Ex: FL, CA" onChange={e => setSearch(e.target.value)}/>
                 <br/>
                 <br/>
-                {/* <input type="submit" onSubmit={renderParks} /> */}
+                {/* <input type="submit" onSubmit={e => props.setResults(renderParks)} /> */}
 
             </form>
             <div className="textboxSearch">
