@@ -38,7 +38,7 @@ export default function Park(props) {
             console.log(typeof response.data.data[0].activities)
             setIndvPark(response.data.data[0])
             
-            
+            // test
 
 
           } catch (err) {
