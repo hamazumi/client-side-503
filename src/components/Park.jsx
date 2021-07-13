@@ -5,7 +5,8 @@ import {
     BrowserRouter as Router,
     Switch,
     Route, 
-    Redirect
+    Redirect, 
+    useParams
   } from 'react-router-dom'
   
   import {
@@ -18,16 +19,26 @@ import {
 
 export default function Park(props) {
 
-    console.log(props.match.params.id)
+    const [indvPark, setIndvPark] = useState([])
+
+    const {id} = useParams()
+    
+    console.log({id}.id)
+    // console.log(props.match.params.id)
     useEffect (() => {
         async function getState() {
           try{
-            const response = await axios.get(`https://developer.nps.gov/api/v1/parks?parkCode=${props.match.params.id}&api_key=${API_KEY}`)
+            const response = await axios.get(`https://developer.nps.gov/api/v1/parks?parkCode=${id}&api_key=${API_KEY}`)
             
             
-            props.setResults(response)
+            console.log(response.data.fullName)
             
-            console.log(response.data.data)
+            console.log(response.data.data[0])
+
+            setIndvPark(response.data.data[0])
+            
+            
+
 
           } catch (err) {
             console.log(err)
@@ -36,13 +47,18 @@ export default function Park(props) {
         getState()
       }, [])
 
-
+     
    
 
     return(
         <div>
-            <h1>test</h1>
-            {/* {parkInfo} */}
+            <h1>{indvPark.fullName}</h1>
+            <p>{indvPark.description}</p>
+            <p>{indvPark.directionsInfo}</p>
+            <p>{indvPark.directionsUrl}</p>
+            <p>{indvPark.weatherInfo}</p>
+            <p>{indvPark.url}</p>
+           
         </div>
     )
 }
