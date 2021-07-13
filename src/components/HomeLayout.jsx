@@ -1,5 +1,4 @@
 import React from 'react'
-
 import {Button, Dropdown, Card} from 'react-bootstrap'
 import axios from 'axios'
 import { useEffect, useState } from 'react';
@@ -24,7 +23,6 @@ function HomeLayout(props) {
     
 
 
-    const stateName="Kentucky"
   
     return (
       <>
