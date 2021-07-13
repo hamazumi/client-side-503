@@ -32,9 +32,7 @@ export default function Park(props) {
             
             
             console.log(response.data.fullName)
-            
             console.log(response.data.data[0])
-
             setIndvPark(response.data.data[0])
             
             
@@ -47,17 +45,22 @@ export default function Park(props) {
         getState()
       }, [])
 
+    //   const images = indvPark.images.map((park, index) => <img key={index} style={{width: "200px"}} src="park.url" alt="image" />)
+      const activities = indvPark.activities.map((park, index) => <li> {park.name}</li>)
      
    
 
     return(
         <div>
             <h1>{indvPark.fullName}</h1>
+            <p>{indvPark.name}</p>
+            <p>{indvPark.states}</p>
             <p>{indvPark.description}</p>
             <p>{indvPark.directionsInfo}</p>
             <p>{indvPark.directionsUrl}</p>
             <p>{indvPark.weatherInfo}</p>
             <p>{indvPark.url}</p>
+            <p>{activities}</p>
            
         </div>
     )
