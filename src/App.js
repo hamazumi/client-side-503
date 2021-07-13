@@ -102,9 +102,17 @@ function App() {
             render={() => <ParkResult results={results} />}
           />
 
-          <Route path="/park/parkCode">
-            <Park />
-          </Route>
+          <Route 
+            exact path="/park/:id"
+            render={props => {
+              const park = results.find(park => park.id.toString() === props.match.params.id)
+              props = {...props, ...park}
+              return(
+                <Park {...props} />
+              )
+            }}
+          />
+         
           
         </Switch>
       </div>
