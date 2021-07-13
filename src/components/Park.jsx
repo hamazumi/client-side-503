@@ -104,7 +104,7 @@ export default function Park(props) {
 
                 
               <h1>{parkfullName}</h1>
-              <p>United States of America / {parkStates} / {parkfullName}</p>
+              <p>United States of America / {parkStates} </p>
               <h4 className="">Alerts & Conditions</h4>
               <p>{parkWeatherInfo}</p>
               <h4>Description</h4>
