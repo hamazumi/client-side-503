@@ -20,18 +20,20 @@ export default function Park(props) {
 
     console.log(props.match.params.id)
     useEffect (() => {
-        async function getPost() {
+        async function getState() {
           try{
-            const response = await axios.get(`https://developer.nps.gov/api/v1/parks?${props.match.params.id}&api_key=${API_KEY}`)
-            props.setResults(response.data.data)
-            console.log('testing testing testing')
+            const response = await axios.get(`https://developer.nps.gov/api/v1/parks?parkCode=${props.match.params.id}&api_key=${API_KEY}`)
+            
+            
+            props.setResults(response)
+            
             console.log(response.data.data)
 
           } catch (err) {
             console.log(err)
           }
         }
-        getPost()
+        getState()
       }, [])
 
 
