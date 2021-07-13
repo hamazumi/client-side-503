@@ -5,7 +5,8 @@ import {
     BrowserRouter as Router,
     Switch,
     Route, 
-    Redirect
+    Redirect,
+    Link
   } from 'react-router-dom'
 import Profile from './Profile'
 
@@ -62,7 +63,7 @@ export default function Login(props) {
 
     return(
         <div>
-       <Container>
+       <Container className="mt-5">
            <Row>
                <Col md={{span: 7, offset: 3}}>
                    <Jumbotron>
@@ -92,7 +93,7 @@ export default function Login(props) {
                                <Button type='submit' className='mt-5 mb-3'>Log In</Button>
                                <Row>
                                    <Col>
-                                   <p>Dont have an account? Sign Up</p>
+                                   <p>Dont have an account? <Link to='/register'>Sign Up</Link></p>
                                    </Col>
                                </Row>
                                
