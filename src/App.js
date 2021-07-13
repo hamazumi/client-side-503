@@ -1,5 +1,5 @@
 import './App.css';
-import Navbar from './components/Navbar.jsx'
+import Navigation from './components/Navbar.jsx'
 import Login from './components/Login.jsx'
 import Register from './components/Register.jsx'
 import Profile from './components/Profile.jsx'
@@ -53,7 +53,7 @@ function App() {
   return (
     <Router>
       <header>
-        <Navbar  currentUser={ currentUser } handleLogout={ handleLogout }/>
+        <Navigation  currentUser={ currentUser } handleLogout={ handleLogout }/>
       </header>
 
       <div className="App">
