@@ -62,7 +62,7 @@ export default function Park(props) {
                 
               <h1>{indvPark.fullName}</h1>
               <p>United States of America / {indvPark.states} / {indvPark.fullName}</p>
-              <h4>Alerts & Conditions</h4>
+              <h4 className="">Alerts & Conditions</h4>
               <p>{indvPark.weatherInfo}</p>
               <h4>Description</h4>
               <p>{indvPark.description}</p>
