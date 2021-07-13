@@ -102,7 +102,6 @@ function App() {
             path="/results"
             render={() => <ParkResult results={results} />}
           />
-
           <Route 
             exact path="/park/:id"
             render={props => {
@@ -113,7 +112,6 @@ function App() {
               )
             }}
           />
-         
           
         </Switch>
       </div>
