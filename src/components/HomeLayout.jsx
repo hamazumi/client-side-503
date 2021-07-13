@@ -42,25 +42,13 @@ function HomeLayout() {
   
     return (
       <>
-  <div className="container border text-center align-middle mt-3">
-    <div className="row">
-      <div className="col-sm">
-      Home Page (icon)
-      </div>
-      <div className="col-sm">
-      <h1>LOGO</h1>
-      </div>
-      <div className="col-sm">
-      <Button style={{marginRight: '10px'}}>Sign Up</Button><Button>Login</Button>
-      </div>
-    </div>
-  </div>
+  
   <form action="/results">
                 <h1>Search for Parks in your State!</h1>
                 <input maxLength="2" style={{width: '90px'}} type="text" id="search" placeholder="Ex: FL, CA" onChange={e => setSearch(e.target.value)}/>
                 <br/>
                 <br/>
-                <input type="submit" onSubmit={renderParks} />
+                {/* <input type="submit" onSubmit={renderParks} /> */}
 
             </form>
             <div className="textboxSearch">
@@ -72,7 +60,7 @@ function HomeLayout() {
   
     <div className="container border">
     <div className="row border">
-      <h3>Local favorites near {stateName}</h3>
+      <h3>Popular parks: </h3>
     </div>
     <div className="row border">
       {/* Card */}
