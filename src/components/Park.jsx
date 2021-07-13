@@ -19,11 +19,11 @@ import {
 
 export default function Park(props) {
 
-    const [indvPark, setIndvPark] = useState([])
+    const [indvPark, setIndvPark] = useState(null)
 
     const {id} = useParams()
     
-    console.log({id}.id)
+    // console.log({id}.id)
     // console.log(props.match.params.id)
     useEffect (() => {
         async function getState() {
@@ -32,7 +32,8 @@ export default function Park(props) {
             
             
             console.log(response.data.fullName)
-            console.log(response.data.data[0])
+            
+            console.log(typeof response.data.data[0].activities)
             setIndvPark(response.data.data[0])
             
             
@@ -44,15 +45,17 @@ export default function Park(props) {
         }
         getState()
       }, [])
+      let images, activities, park
+      
+      if(indvPark){
 
-    //   const images = indvPark.images.map((park, index) => <img key={index} style={{width: "200px"}} src="park.url" alt="image" />)
-      const activities = indvPark.activities.map((park, index) => <li> {park.name}</li>)
-     
-   
-
-    return(
-        <div>
-            <h1>{indvPark.fullName}</h1>
+          //   console.log(indvPark.images)
+            images = Object.values(indvPark.images).map((pic, index) => <img style={{width: "200px"}}  src={pic.url} alt="cool park image" />)
+            activities = Object.values(indvPark.activities).map((park, index) => <span key={index}> {park.name} |</span>)
+          //  console.log(typeof indvPark.activities)
+          park = (
+              <>
+              <h1>{indvPark.fullName}</h1>
             <p>{indvPark.name}</p>
             <p>{indvPark.states}</p>
             <p>{indvPark.description}</p>
@@ -60,7 +63,21 @@ export default function Park(props) {
             <p>{indvPark.directionsUrl}</p>
             <p>{indvPark.weatherInfo}</p>
             <p>{indvPark.url}</p>
+            
+
+              </>
+
+          )
+        }
+   
+
+    return(
+        <div>
+           {park}
             <p>{activities}</p>
+            {images}
+            
+
            
         </div>
     )
