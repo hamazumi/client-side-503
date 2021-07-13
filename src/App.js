@@ -7,6 +7,7 @@ import Profile from './components/Profile.jsx'
 import Welcome from './components/Welcome.jsx'
 import ParkResult from './components/ParkResult.jsx'
 import Park from './components/Park.jsx'
+import HomeLayout from './components/HomeLayout.jsx'
 
 
 import {
@@ -78,7 +79,7 @@ function App() {
         <Switch>
           <Route 
             exact path="/"
-            component={Welcome}
+            component={HomeLayout}
           />
 
           <Route 
