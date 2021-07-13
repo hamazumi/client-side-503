@@ -75,7 +75,7 @@ export default function Park(props) {
         <div>
            {park}
             <p>{activities}</p>
-            {images}
+            {images[0]}
             
 
            
