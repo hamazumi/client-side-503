@@ -19,11 +19,11 @@ import {
 
 export default function Park(props) {
 
-    const [indvPark, setIndvPark] = useState([])
+    const [indvPark, setIndvPark] = useState(null)
 
     const {id} = useParams()
     
-    console.log({id}.id)
+    // console.log({id}.id)
     // console.log(props.match.params.id)
     useEffect (() => {
         async function getState() {
@@ -33,8 +33,7 @@ export default function Park(props) {
             
             console.log(response.data.fullName)
             
-            console.log(response.data.data[0])
-
+            console.log(typeof response.data.data[0].activities)
             setIndvPark(response.data.data[0])
             
             
@@ -46,20 +45,38 @@ export default function Park(props) {
         }
         getState()
       }, [])
+      let images, activities, park
+      
+      if(indvPark){
 
-     
+          //   console.log(indvPark.images)
+            images = Object.values(indvPark.images).map((pic, index) => <img style={{width: "200px"}}  src={pic.url} alt="cool park image" />)
+            activities = Object.values(indvPark.activities).map((park, index) => <span key={index}> {park.name} |</span>)
+          //  console.log(typeof indvPark.activities)
+          park = (
+              <>
+                <h1>{indvPark.fullName}</h1>
+                <p>{indvPark.name}</p>
+                <p>{indvPark.states}</p>
+                <p>{indvPark.description}</p>
+                <p>{indvPark.directionsInfo}</p>
+                <p>{indvPark.directionsUrl}</p>
+                <p>{indvPark.weatherInfo}</p>
+                <p>{indvPark.url}</p>
+            
+              </>
+
+          )
+        }
    
 
     return(
         <div>
-            <h1>{indvPark.fullName}</h1>
-            <p>{indvPark.description}</p>
-            <p>{indvPark.directionsInfo}</p>
-            <p>{indvPark.directionsUrl}</p>
-            <p>{indvPark.weatherInfo}</p>
-            <p>{indvPark.url}</p>
-            <p>{indvPark.entranceFees}</p>
-            {/* <p>{indvPark.images[0].url}</p> */}
+           {park}
+            <p>{activities}</p>
+            {images}
+            
+
            
         </div>
     )
