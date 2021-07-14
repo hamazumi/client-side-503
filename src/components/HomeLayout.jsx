@@ -26,7 +26,7 @@ function HomeLayout(props) {
     const filterParks = props.results.filter((park) => {
         return park.states.toString().toLowerCase().includes(search.toString().toLowerCase()) 
     })
-    const renderParks = filterParks.map((park, index) => <li style={{ listStyleType: "none" }}><Link  style={{ color: "darkgreen" }}  to={`/park/${park.parkCode}`}>{park.fullName}</Link></li>)
+    const renderParks = filterParks.map((park, index) => <li style={{ listStyleType: "none" }}><Link  style={{ color: "black" }}  to={`/park/${park.parkCode}`}>{park.fullName}</Link></li>)
     // <div key={index}>{park.fullName}</div>)
     
 
@@ -51,8 +51,8 @@ function HomeLayout(props) {
   <div className="container-fluid border text-center align-middle" style={{height: "400px", backgroundColor: '#E0FCE6', backgroundImage:`url(${Hero})`}}> 
     <h1 className="mb-4 font-weight-bold text-white" style={{marginTop: '12%', fontSize: "48px"}}>Find your next National Park</h1>
   
-    <form action="/results">
-                      <h1>Search for Parks in your State!</h1>
+    <form action="/results" >
+                      <h1></h1>
                       <input maxLength="2" style={{width: '90px'}} type="text" id="search" placeholder="Ex: FL, CA" onChange={e => setSearch(e.target.value)}/>
                       <br/>
                       <br/>
@@ -61,7 +61,7 @@ function HomeLayout(props) {
                   </form>
                   <div className="textboxSearch">
   
-                      <ul>
+                      <ul style={{backgroundColor: "white"}} >
                           {renderParks}
                       </ul>
                   </div>
