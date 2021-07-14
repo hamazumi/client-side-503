@@ -34,7 +34,7 @@ export default function Activities(props) {
     })
 
     let x  = props.results.forEach(park => console.log(park.activities.filter((activity) => activity.name.toString().toLowerCase().includes(actSearch.toString().toLowerCase()))))
-    if(x != []){
+    if(x > 0){
         console.log("yepa")
     }
     // console.log(filterAll)
