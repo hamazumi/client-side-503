@@ -41,7 +41,7 @@ export default function Welcome() {
                 <input type="submit" onSubmit={renderParks} />
 
             </form>
-            <div className="textboxSearch">
+            <div className="textboxSearch" >
 
                 <ul>
                     {renderParks}

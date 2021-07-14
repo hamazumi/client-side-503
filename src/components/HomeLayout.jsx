@@ -59,9 +59,9 @@ function HomeLayout(props) {
                       {/* <input type="submit" onSubmit={e => props.setResults(renderParks)} /> */}
   
                   </form>
-                  <div className="textboxSearch">
+                  <div className="textboxSearch" style={{width: '450px'}}>
   
-                      <ul style={{backgroundColor: "white"}} >
+                      <ul style={{backgroundColor: "white"}}  >
                           {renderParks}
                       </ul>
                   </div>
