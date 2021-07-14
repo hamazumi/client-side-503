@@ -18,7 +18,6 @@ import {
 
   let API_KEY = process.env.REACT_APP_API_KEY
 
-
 export default function Park(props) {
 
     const [indvPark, setIndvPark] = useState(null)
@@ -38,7 +37,7 @@ export default function Park(props) {
             console.log(typeof response.data.data[0].activities)
             setIndvPark(response.data.data[0])
             
-            
+            // test
 
 
           } catch (err) {

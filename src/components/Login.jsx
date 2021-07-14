@@ -73,6 +73,7 @@ export default function Login(props) {
                <Col md={{span: 7, offset: 3}}>
                    <Jumbotron>
                        <h3>Log In</h3>
+                       <p>{message}</p>
                        <Form onSubmit={handleSubmit}>
                            <Form.Group>
                                <Form.Row>

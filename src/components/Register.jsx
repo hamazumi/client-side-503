@@ -65,6 +65,7 @@ export default function Register(props) {
                <Col md={{span: 7, offset: 3}}>
                    <Jumbotron>
                        <h3>Create your free account</h3>
+                       <p>{message}</p>
                        <Form onSubmit={handleSubmit}>
                            <Form.Group>
                                <Form.Row>
