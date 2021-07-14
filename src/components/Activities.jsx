@@ -39,7 +39,8 @@ export default function Activities(props) {
     })
     let allActivities = new Set(allAllActivities)
     console.log(allActivities)
-
+    
+{/* <li  className="parkList text-decoration-none" style={{ listStyleType: "none" }}> <Link style={{ color: "black", fontWeight: "bold" }}  to={`/activities`}>{activity.name}</Link></li>) */}
 
 
 
@@ -58,11 +59,13 @@ let filteredActivities = []
             
         })
         console.log(filteredActivities)
-        const renderParks = filteredActivities.map((park, index) => 
+        const renderParks = allActivities.map((activity, index) => 
         <>
           {/* <hr/>Park code: {park.parkCode} */}
           
-          <li  className="parkList text-decoration-none" style={{ listStyleType: "none" }}> <Link style={{ color: "black", fontWeight: "bold" }}  to={`/park/${park.parkCode}`}>{park.fullName}</Link></li>
+          <li  className="parkList text-decoration-none" style={{ listStyleType: "none" }}> 
+          <Link style={{ color: "black", fontWeight: "bold" }}  to={`/activities`}>{activity.name}</Link>
+          </li>
           
           </>
         )
@@ -104,8 +107,8 @@ let filteredActivities = []
                 <div >
 
                     <ul style={{backgroundColor: "white"}} >
-                        {/* {renderParks} */}
-                        {filteredActivities}
+                        {renderParks}
+                        {/* {filteredActivities} */}
                         
                     </ul>
                 </div>
