@@ -10,8 +10,13 @@ import {
   } from 'react-router-dom'
 import Profile from './Profile'
 
+import LoginImage from './login.jpg'
+
 import {Form, Button, Container, Row, Col, Jumbotron} from 'react-bootstrap'
 
+// var sectionStyle = {
+//     backgroundImage: `url(${LoginImage})`
+// }
 
 
 export default function Login(props) {
