@@ -25,30 +25,35 @@ function HomeLayout(props) {
         return park.states.toString().toLowerCase().includes(search.toString().toLowerCase()) 
     })
     
-    const renderParks = filterParks.map((park, index) => <li style={{ listStyleType: "none" }}><Link  style={{ color: "black" }}  to={`/park/${park.parkCode}`}>{park.fullName}</Link></li>)
+    const renderParks = filterParks.map((park, index) => 
+    <>
+      {/* <hr/>Park code: {park.parkCode} */}
+      <li className="" style={{ listStyleType: "none" }}>
+        <Link style={{ color: "white", fontWeight: "bold" }}  to={`/park/${park.parkCode}`}>{park.fullName}</Link>
+      </li>
+      </>
+    )
     // <div key={index}>{park.fullName}</div>)
     
     return (
       <>
   
 
-  <div className="container-fluid border text-center align-top" style={{height: "400px", backgroundColor: '#E0FCE6', backgroundImage:`url(${Hero})`}}> 
+  <div className="container-fluid border text-center align-center" style={{height: "400px", backgroundColor: '#E0FCE6', backgroundImage:`url(${Hero})`}}> 
 
-    <h1 className="mb-0 font-weight-bold text-white" style={{marginTop: '12%', fontSize: "48px", textShadow: '2px 2px 4px #726039' }}>Find your next National Park</h1>
+    <h1 className="mb-0 font-weight-bold text-white" style={{marginTop: '100px', fontSize: "48px", textShadow: '2px 2px 4px #726039' }}>Find your next National Park</h1>
 
   <p className="text-white font-weight-bold" style={{textShadow: '2px 2px 4px #726039'}}>Enter your state code </p>
   
-  <div className="mx-auto">
-  <form className="mx-auto form-group border" style={{height: '33px'}} action="/results">
+
+<form className="mx-auto form-group" style={{height: '33px'}} action="/results">
     <input className="text-uppercase" maxLength="2" style={{width: '90px'}} type="text" id="search" placeholder="Ex: FL, CA" onChange={e => setSearch(e.target.value)}/>
   </form>
 
-</div>
 
-
-<div className="container border text-justify">
-  <div className="border textboxSearch" style={{width: '500px', height: '130px'}}>
-    <ul className="" style={{ background: 'rgba(169, 143, 84, .7)' }} >
+<div className="d-flex align-items-center text-justify">
+  <div className="textboxSearch" style={{width: '500px', height: '150px', margin: '0 auto'}}>
+    <ul style={{ background: 'rgba(169, 143, 84, .8)' }} >
     {renderParks}
     </ul>
   </div>
