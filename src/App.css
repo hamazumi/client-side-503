@@ -43,6 +43,9 @@
   overflow: hidden scroll;
   /* overflow-y: hidden;
   overflow-x: hidden;  */
+}
 
-
+.parkList:hover {
+  background-color: #9E7F41;
+  text-decoration: none !important;
 }

@@ -108,7 +108,7 @@ function App() {
           />
           <Route 
             exact path="/park/:id"
-            render={() => <Park results={results} />}
+            render={props => <Park results={results} {...props} currentUser={ currentUser } setCurrentUser={ setCurrentUser }/>}
           />
           <Route 
             exact path="/activities"
