@@ -1,5 +1,4 @@
-import '../App.css';
-import 'bootstrap/dist/css/bootstrap.min.css'
+import React from 'react'
 import {Button, Dropdown, Card} from 'react-bootstrap'
 import bg1 from './resources/images/nature_placeholder1.jpg' 
 import logo from './resources/images/Logo.png'
@@ -32,7 +31,6 @@ function HomeLayout(props) {
     
 
 
-    const stateName="Kentucky"
   
     return (
       <>
