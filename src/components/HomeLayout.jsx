@@ -51,7 +51,7 @@ function HomeLayout(props) {
   <div className="container-fluid border text-center align-middle" style={{height: "400px", backgroundColor: '#E0FCE6', backgroundImage:`url(${Hero})`}}> 
     <h1 className="mb-4 font-weight-bold text-white" style={{marginTop: '12%', fontSize: "48px"}}>Find your next National Park</h1>
   
-    <form action="/results">
+<form action="/results">
                       <h1>Search for Parks in your State!</h1>
                       <input maxLength="2" style={{width: '90px'}} type="text" id="search" placeholder="Ex: FL, CA" onChange={e => setSearch(e.target.value)}/>
                       <br/>
