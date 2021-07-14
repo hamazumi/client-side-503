@@ -54,6 +54,7 @@ function HomeLayout(props) {
   <p className="text-white font-weight-bold" style={{textShadow: '2px 2px 3px #7a6c4e'}}>Enter your state code </p>
   
 
+
 <form className="mx-auto form-group" style={{height: '33px'}} action="/results">
     <input className="text-uppercase" maxLength="2" style={{width: '90px', border: '0', borderRadius: '2px', background: 'white', boxShadow: '3px 3px 3px #7a6c4e'}} type="text" id="search" placeholder=" Ex: FL, CA" onChange={e => setSearch(e.target.value)}/>
   </form>
@@ -64,6 +65,7 @@ function HomeLayout(props) {
     <ul className="text-decoration-none" style={{ background: 'rgba(169, 143, 84, .8)', textShadow: '1px 1px 1px #7a6c4e' }}>
     {renderParks}
     </ul>
+
   </div>
 </div>
 
