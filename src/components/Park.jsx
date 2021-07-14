@@ -18,14 +18,13 @@ import {
 
   let API_KEY = process.env.REACT_APP_API_KEY
 
-
 export default function Park(props) {
 
-    const [indvPark, setIndvPark] = useState([])
+    const [indvPark, setIndvPark] = useState(null)
 
     const {id} = useParams()
     
-    console.log({id}.id)
+    // console.log({id}.id)
     // console.log(props.match.params.id)
     useEffect (() => {
         async function getState() {
@@ -35,8 +34,7 @@ export default function Park(props) {
             
             console.log(response.data.fullName)
             
-            console.log(response.data.data[0])
-
+            console.log(typeof response.data.data[0].activities)
             setIndvPark(response.data.data[0])
             
             
@@ -48,14 +46,6 @@ export default function Park(props) {
         }
         getState()
       }, [])
-<<<<<<< HEAD
-
-      
-
-
-
-     
-=======
           
             let images, activities, parkfullName, parkDescription, parkDirectionsInfo, parkDirectionsUrl, parkWeatherInfo, parkUrl, parkStates
       
@@ -100,16 +90,12 @@ export default function Park(props) {
 
      
 
->>>>>>> 2c899dcb6aeb1549b1988a798c265a2a4dcdd9d8
    
 
     return(
         <div>
-<<<<<<< HEAD
-=======
 
 
->>>>>>> 2c899dcb6aeb1549b1988a798c265a2a4dcdd9d8
           <Container className="text-left">
             <Row>
               <Col xs={8}>
