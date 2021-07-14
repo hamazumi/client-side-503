@@ -37,13 +37,12 @@ function HomeLayout(props) {
     const renderParks = filterParks.map((park, index) => 
     <>
       {/* <hr/>Park code: {park.parkCode} */}
-      <li className="parkList " style={{ listStyleType: "none" }}>
+      <li className="parkList text-decoration-none" style={{ listStyleType: "none" }}>
         <Link style={{ color: "white", fontWeight: "bold" }}  to={`/park/${park.parkCode}`}>{park.fullName}</Link>
       </li>
       </>
     )
-    // <div key={index}>{park.fullName}</div>)
-    
+
     return (
       <>
   
@@ -52,17 +51,17 @@ function HomeLayout(props) {
 
     <h1 className="mb-0 font-weight-bold text-white" style={{marginTop: '80px', fontSize: "48px", textShadow: '2px 2px 3px #7a6c4e' }}>Find your next National Park</h1>
 
-  <p className="text-white font-weight-bold" style={{textShadow: '2px 2px 3px #7a6c4e' }}>Enter your state code </p>
+  <p className="text-white font-weight-bold" style={{textShadow: '2px 2px 3px #7a6c4e'}}>Enter your state code </p>
   
 
 <form className="mx-auto form-group" style={{height: '33px'}} action="/results">
-    <input className="text-uppercase" maxLength="2" style={{width: '90px', border: '0', borderRadius: '2px', background: 'white'}} type="text" id="search" placeholder=" Ex: FL, CA" onChange={e => setSearch(e.target.value)}/>
+    <input className="text-uppercase" maxLength="2" style={{width: '90px', border: '0', borderRadius: '2px', background: 'white', boxShadow: '3px 3px 3px #7a6c4e'}} type="text" id="search" placeholder=" Ex: FL, CA" onChange={e => setSearch(e.target.value)}/>
   </form>
 
 
 <div className="d-flex align-items-center text-justify">
   <div className="textboxSearch" style={{width: '500px', height: '173px', margin: '0 auto', border: '0'}}>
-    <ul style={{ background: 'rgba(169, 143, 84, .8)', textShadow: '1px 1px 1px #7a6c4e' }}>
+    <ul className="text-decoration-none" style={{ background: 'rgba(169, 143, 84, .8)', textShadow: '1px 1px 1px #7a6c4e' }}>
     {renderParks}
     </ul>
   </div>
