@@ -48,44 +48,97 @@ export default function Park(props) {
         }
         getState()
       }, [])
+<<<<<<< HEAD
 
       
 
 
 
      
+=======
+          
+            let images, activities, parkfullName, parkDescription, parkDirectionsInfo, parkDirectionsUrl, parkWeatherInfo, parkUrl, parkStates
+      
+      if(indvPark){
+
+
+          //   console.log(indvPark.images)
+            images = Object.values(indvPark.images).map((pic, index) => <img style={{width: "300px"}}  src={pic.url} alt="cool park image" />)
+            activities = Object.values(indvPark.activities).map((park, index) => <span key={index}> {park.name} |</span>)
+          //  console.log(typeof indvPark.activities)
+          parkfullName = (
+              <>
+              <h1>{indvPark.fullName}</h1>
+              </>)
+          parkStates = (
+              <>
+              <p>{indvPark.states}</p>
+              </>)
+          parkDescription = (
+              <>
+              <p>{indvPark.description}</p>
+              </>)
+          parkDirectionsInfo = (
+              <>
+              <p>{indvPark.directionsInfo}</p>
+              </>)
+          parkDirectionsUrl = (
+              <>
+              <p>{indvPark.directionsUrl}</p>
+              </>)
+          parkWeatherInfo = (
+              <>
+              <p>{indvPark.weatherInfo}</p>
+              </>)
+          parkUrl = (
+              <>
+              <p>{indvPark.url}</p>
+              </>)
+     
+          
+        }
+
+     
+
+>>>>>>> 2c899dcb6aeb1549b1988a798c265a2a4dcdd9d8
    
 
     return(
         <div>
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 2c899dcb6aeb1549b1988a798c265a2a4dcdd9d8
           <Container className="text-left">
             <Row>
               <Col xs={8}>
               
 
                 
-              <h1>{indvPark.fullName}</h1>
-              <p>United States of America / {indvPark.states} / {indvPark.fullName}</p>
+              <h1>{parkfullName}</h1>
+              <p>United States of America / {parkStates} </p>
               <h4 className="">Alerts & Conditions</h4>
-              <p>{indvPark.weatherInfo}</p>
+              <p>{parkWeatherInfo}</p>
               <h4>Description</h4>
-              <p>{indvPark.description}</p>
-              <p>{indvPark.directionsInfo}</p>
-              <p>{indvPark.directionsUrl}</p>
+              <p>{parkDescription}</p>
+              <p>{parkDirectionsInfo}</p>
+              <p>{parkDirectionsUrl}</p>
               
-              <p>{indvPark.url}</p>
+              <p>{parkUrl}</p>
               </Col>
               <Col>
               <h4>Basic Information</h4>
-              <h6>Fees & Passes ></h6>
-              <h6>Operating Hours ></h6>
-              <h6>Weather ></h6>
+              <h6>Fees & Passes </h6>
+              <h6>Operating Hours </h6>
+              <h6>Weather </h6>
 
               <h4>Activities/Amenities</h4>
-
+                {activities}
               </Col>
             </Row>
           </Container>
+          {images}
             
            
         </div>
