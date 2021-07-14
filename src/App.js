@@ -8,6 +8,7 @@ import Welcome from './components/Welcome.jsx'
 import ParkResult from './components/ParkResult.jsx'
 import Park from './components/Park.jsx'
 import HomeLayout from './components/HomeLayout.jsx'
+import Activities from './components/Activities.jsx'
 
 
 import {
@@ -107,6 +108,14 @@ function App() {
           />
           <Route 
             exact path="/park/:id"
+            render={() => <Park results={results} />}
+          />
+          <Route 
+            exact path="/activities"
+            render={() => <Activities results={results} />}
+          />
+          <Route 
+            exact path="/activities/:id"
             render={() => <Park results={results} />}
           />
           
