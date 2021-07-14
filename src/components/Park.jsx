@@ -95,13 +95,6 @@ export default function Park(props) {
 
     return(
         <div>
-<<<<<<< HEAD
-           {park}
-            <p>{activities}</p>
-            {images}
-            
-=======
->>>>>>> 84baabe881515358a5c5c5a5deb6fff3b4dfd25b
 
 
           <Container className="text-left">
