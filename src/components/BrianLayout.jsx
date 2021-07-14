@@ -1,4 +1,5 @@
-import React from 'react'
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import {Button, Dropdown, Card} from 'react-bootstrap'
 import bg1 from './resources/images/nature_placeholder1.jpg' 
 import logo from './resources/images/Logo.png'
@@ -8,49 +9,53 @@ import np2 from './resources/images/np2.png'
 import np3 from './resources/images/np3.png'
 import np4 from './resources/images/np4.png'
 import np5 from './resources/images/np5.png'
-import axios from 'axios'
-import { useEffect, useState } from 'react';
-import FormFileInput from 'react-bootstrap/esm/FormFileInput';
-import {Link} from 'react-router-dom'
 
+function App() {
 
-let API_KEY = process.env.REACT_APP_API_KEY
-console.log(API_KEY)
-function HomeLayout(props) {
+  const stateName="Kentucky"
 
+  return (
+    <>
+    {/* <div className="container-fluid" style={{backgroundColor:"gray"}}></div> */}
+<div className="jumbotron jumbotron-fluid">
+  <div className="row">
+    <div className="col-sm text-left pl-5">
+        <img src={logo} alt="Logo" />
+    </div>
+    <div className="col-sm" >
+        &nbsp;
+    </div>
+    <div variant="primary" className="col-sm" style={{paddingLeft: '520px', paddingTop: '15px'}}>
+    <Button variant="secondary" style={{paddingRight: '10px'}}>Sign Up</Button> <Button>Login</Button>
+    </div>
+  </div>
+</div>
 
+<div className="container-fluid border text-center align-middle" style={{height: "400px", backgroundColor: '#E0FCE6', backgroundImage:`url(${Hero})`}}> 
+  <h1 className="mb-4 font-weight-bold text-white" style={{marginTop: '12%', fontSize: "48px"}}>Find your next National Park</h1>
+<Dropdown>
+  <Dropdown.Toggle variant="success" id="dropdown-basic">
+    Choose State
+  </Dropdown.Toggle>
+  <Dropdown.Menu>
+    <Dropdown.Item href="#/action-1">Alabama</Dropdown.Item>
+    <Dropdown.Item href="#/action-2">Alaska</Dropdown.Item>
+    <Dropdown.Item href="#/action-3">Arizona</Dropdown.Item>
+    <Dropdown.Item href="#/action-3">Arkansas</Dropdown.Item>
+    <Dropdown.Item href="#/action-3">California</Dropdown.Item>
+    <Dropdown.Item href="#/action-3">Colorado</Dropdown.Item>
+    <Dropdown.Item href="#/action-3">Colorado</Dropdown.Item>
+    <Dropdown.Item href="#/action-3">Connecticut</Dropdown.Item>
+    <Dropdown.Item href="#/action-3">Delaware</Dropdown.Item>
+    <Dropdown.Item href="#/action-3">Florida</Dropdown.Item>
+    <Dropdown.Item href="#/action-3">Georgia</Dropdown.Item>
+    <Dropdown.Item href="#/action-3">Hawaii</Dropdown.Item>
+    <Dropdown.Item href="#/action-3">Idaho</Dropdown.Item>
+    <Dropdown.Item href="#/action-3">Illinois</Dropdown.Item>
+  </Dropdown.Menu>
+</Dropdown>
+</div>
 
-    const [search, setSearch] = useState("")
-    
-
-    const filterParks = props.results.filter((park) => {
-        return park.states.toString().toLowerCase().includes(search.toString().toLowerCase()) 
-    })
-    const renderParks = filterParks.map((park, index) => <li style={{ listStyleType: "none" }}><Link  style={{ color: "darkgreen" }}  to={`/park/${park.parkCode}`}>{park.fullName}</Link></li>)
-    // <div key={index}>{park.fullName}</div>)
-    
-
-
-  
-    return (
-      <>
-
-      <form action="/results">
-                    <h1>Search for Parks in your State!</h1>
-                    <input maxLength="2" style={{width: '90px'}} type="text" id="search" placeholder="Ex: FL, CA" onChange={e => setSearch(e.target.value)}/>
-                    <br/>
-                    <br/>
-                    {/* <input type="submit" onSubmit={e => props.setResults(renderParks)} /> */}
-
-                </form>
-                <div className="textboxSearch">
-
-                    <ul>
-                        {renderParks}
-                    </ul>
-                </div>
-      
- 
 <div className="container">
   <div className="row">
     <h3 className="pt-2 text-muted">Popular Parks</h3>
@@ -139,4 +144,5 @@ function HomeLayout(props) {
   );
 }
 
-export default HomeLayout
+export default App;
+
