@@ -6,11 +6,10 @@ import {FaHeart} from 'react-icons/fa'
 
 export default function Navigation(props) {
     
-
     // if the user is logged in 
     const loggedIn = (
         <>
-         <Navbar bg="dark" variant="dark">
+    <Navbar bg="dark" variant="dark">
     
     <Nav className="mr-auto justify-content-end">
       <Nav.Link href="/"><AiFillHome /></Nav.Link>
