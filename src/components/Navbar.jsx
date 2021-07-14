@@ -5,7 +5,7 @@ import {FaHeart} from 'react-icons/fa'
 
 
 export default function Navigation(props) {
-    console.log(props)
+    
 
     // if the user is logged in 
     const loggedIn = (
