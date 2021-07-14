@@ -14,10 +14,9 @@ import {
     useEffect
   } from 'react'
 
-  import {Container, Row, Col} from 'react-bootstrap'
+  import {Container, Row, Col, Image} from 'react-bootstrap'
 
   let API_KEY = process.env.REACT_APP_API_KEY
-
 
 export default function Park(props) {
 
@@ -38,7 +37,7 @@ export default function Park(props) {
             console.log(typeof response.data.data[0].activities)
             setIndvPark(response.data.data[0])
             
-            
+            // test
 
 
           } catch (err) {
@@ -48,18 +47,23 @@ export default function Park(props) {
         getState()
       }, [])
           
-            let images, activities, parkfullName, parkDescription, parkDirectionsInfo, parkDirectionsUrl, parkWeatherInfo, parkUrl, parkStates
+            let images, activities, parkfullName, parkDescription, parkDirectionsInfo, parkDirectionsUrl, parkWeatherInfo, parkUrl, parkStates, renderedImages, headerImage, headerImageArray
       
       if(indvPark){
 
 
           //   console.log(indvPark.images)
-            images = Object.values(indvPark.images).map((pic, index) => <img style={{width: "300px"}}  src={pic.url} alt="cool park image" />)
+            images = Object.values(indvPark.images).map((pic, index) =><Col xs={{span: 3}}> <div style={{height: '250px', position: 'relative', overflow: 'hidden'}}><Image style={{width: '100%'}}src={pic.url} rounded /></div></Col>)
+            headerImageArray = Object.values(indvPark.images).map((pic, index) => <img style={{width: '100%'}}  src={pic.url} alt="cool park image" />)
+            headerImage = headerImageArray[0]
+            // renderedImages = images.forEach((img) => {
+            //     <Col xs={{span: 2, offset: 3}}>{img}</Col>
+            // })
             activities = Object.values(indvPark.activities).map((park, index) => <span key={index}> {park.name} |</span>)
           //  console.log(typeof indvPark.activities)
           parkfullName = (
               <>
-              <h1>{indvPark.fullName}</h1>
+              <p>{indvPark.fullName}</p>
               </>)
           parkStates = (
               <>
@@ -95,16 +99,20 @@ export default function Park(props) {
 
     return(
         <div>
-
-
+          
+        
           <Container className="text-left">
+          <div style={{height: '250px', position: 'relative', overflow: 'hidden'}}>
+            {headerImage}
+          </div>
             <Row>
               <Col xs={8}>
               
 
-                
+             
               <h1>{parkfullName}</h1>
-              <p>United States of America / {parkStates} </p>
+              <button>Add to favorites</button>
+              {/* <p>United States of America / <span>{parkStates}</span> / <span>{parkfullName}</span></p> */}
               <h4 className="">Alerts & Conditions</h4>
               <p>{parkWeatherInfo}</p>
               <h4>Description</h4>
@@ -124,8 +132,13 @@ export default function Park(props) {
                 {activities}
               </Col>
             </Row>
+            <h3>Images</h3>
+            <Row>
+              
+              {images}
+            </Row>
           </Container>
-          {images}
+          {/* {images} */}
             
            
         </div>
