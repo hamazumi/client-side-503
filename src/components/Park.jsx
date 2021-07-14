@@ -21,11 +21,11 @@ import {
 
 export default function Park(props) {
 
-    const [indvPark, setIndvPark] = useState(null)
+    const [indvPark, setIndvPark] = useState([])
 
     const {id} = useParams()
     
-    // console.log({id}.id)
+    console.log({id}.id)
     // console.log(props.match.params.id)
     useEffect (() => {
         async function getState() {
@@ -35,7 +35,8 @@ export default function Park(props) {
             
             console.log(response.data.fullName)
             
-            console.log(typeof response.data.data[0].activities)
+            console.log(response.data.data[0])
+
             setIndvPark(response.data.data[0])
             
             
@@ -47,39 +48,16 @@ export default function Park(props) {
         }
         getState()
       }, [])
-      let images, activities, park
+
       
-      if(indvPark){
 
-<<<<<<< HEAD
+
+
      
-=======
-          //   console.log(indvPark.images)
-            images = Object.values(indvPark.images).map((pic, index) => <img style={{width: "300px"}}  src={pic.url} alt="cool park image" />)
-            activities = Object.values(indvPark.activities).map((park, index) => <span key={index}> {park.name} |</span>)
-          //  console.log(typeof indvPark.activities)
-          park = (
-              <>
-              <h1>{indvPark.fullName}</h1>
-            <p>{indvPark.name}</p>
-            <p>{indvPark.states}</p>
-            <p>{indvPark.description}</p>
-            <p>{indvPark.directionsInfo}</p>
-            <p>{indvPark.directionsUrl}</p>
-            <p>{indvPark.weatherInfo}</p>
-            <p>{indvPark.url}</p>
-            
-
-              </>
-
-          )
-        }
->>>>>>> 1ca20071bf97cdb92770e03fce0efc05b83c933f
    
 
     return(
         <div>
-<<<<<<< HEAD
           <Container className="text-left">
             <Row>
               <Col xs={8}>
@@ -109,13 +87,6 @@ export default function Park(props) {
             </Row>
           </Container>
             
-=======
-           {park}
-            <p>{activities}</p>
-            {images}
-            
-
->>>>>>> 1ca20071bf97cdb92770e03fce0efc05b83c933f
            
         </div>
     )
