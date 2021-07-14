@@ -16,6 +16,7 @@ import {Link} from 'react-router-dom'
 
 let API_KEY = process.env.REACT_APP_API_KEY
 console.log(API_KEY)
+
 function HomeLayout(props) {
 
     const [search, setSearch] = useState("")
@@ -23,42 +24,38 @@ function HomeLayout(props) {
     const filterParks = props.results.filter((park) => {
         return park.states.toString().toLowerCase().includes(search.toString().toLowerCase()) 
     })
+    
     const renderParks = filterParks.map((park, index) => <li style={{ listStyleType: "none" }}><Link  style={{ color: "black" }}  to={`/park/${park.parkCode}`}>{park.fullName}</Link></li>)
     // <div key={index}>{park.fullName}</div>)
     
     return (
       <>
-      {/* <div className="container-fluid" style={{backgroundColor:"gray"}}></div> */}
-  {/* <div className="jumbotron jumbotron-fluid">
-    <div className="row">
-      <div className="col-sm text-left pl-5">
-          <img src={logo} alt="Logo" />
-      </div>
-      <div className="col-sm" >
-          &nbsp;
-      </div>
-      <div variant="primary" className="col-sm" style={{paddingLeft: '520px', paddingTop: '15px'}}>
-      <Button variant="secondary" style={{paddingRight: '10px'}}>Sign Up</Button> <Button>Login</Button>
-      </div>
-    </div>
-  </div> */}
   
-  <div className="container-fluid border text-center align-middle" style={{height: "400px", backgroundColor: '#E0FCE6', backgroundImage:`url(${Hero})`}}> 
-    <h1 className="mb-4 font-weight-bold text-white" style={{marginTop: '12%', fontSize: "48px"}}>Find your next National Park</h1>
-  
-  <form className="form-group" action="/results">
-    <input maxLength="2" style={{width: '90px'}} type="text" id="search" placeholder="Ex: FL, CA" onChange={e => setSearch(e.target.value)}/>
-    <br/>
-    <br/>
-    {/* <input type="submit" onSubmit={e => props.setResults(renderParks)} /> */}
 
+  <div className="container-fluid border text-center align-top" style={{height: "400px", backgroundColor: '#E0FCE6', backgroundImage:`url(${Hero})`}}> 
+
+    <h1 className="mb-0 font-weight-bold text-white" style={{marginTop: '12%', fontSize: "48px", textShadow: '2px 2px 4px #726039' }}>Find your next National Park</h1>
+
+  <p className="text-white font-weight-bold" style={{textShadow: '2px 2px 4px #726039'}}>Enter your state code </p>
+  
+  <div className="mx-auto">
+  <form className="mx-auto form-group border" style={{height: '33px'}} action="/results">
+    <input className="text-uppercase" maxLength="2" style={{width: '90px'}} type="text" id="search" placeholder="Ex: FL, CA" onChange={e => setSearch(e.target.value)}/>
   </form>
-  <div className="textboxSearch" style={{width: '450px'}}>
 
-  <ul style={{backgroundColor: "white"}} >
-  {renderParks}
-  </ul>
+</div>
+
+
+<div className="container border text-justify">
+  <div className="border textboxSearch" style={{width: '500px', height: '130px'}}>
+    <ul className="" style={{ background: 'rgba(169, 143, 84, .7)' }} >
+    {renderParks}
+    </ul>
   </div>
+</div>
+
+
+
 </div>
   
   <div className="container">
