@@ -18,7 +18,6 @@ import {
 
   let API_KEY = process.env.REACT_APP_API_KEY
 
-
 export default function Park(props) {
 
     const [indvPark, setIndvPark] = useState(null)
