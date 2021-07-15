@@ -14,7 +14,7 @@ import {
     useEffect
   } from 'react'
 
-  import {Container, Row, Col} from 'react-bootstrap'
+  import {Container, Row, Col, Image} from 'react-bootstrap'
 
   let API_KEY = process.env.REACT_APP_API_KEY
 
@@ -47,18 +47,18 @@ export default function Park(props) {
         getState()
       }, [])
           
-            let images, activities, parkfullName, parkDescription, parkDirectionsInfo, parkDirectionsUrl, parkWeatherInfo, parkUrl, parkStates, renderedImages, headerImage
+            let images, activities, parkfullName, parkDescription, parkDirectionsInfo, parkDirectionsUrl, parkWeatherInfo, parkUrl, parkStates, renderedImages, headerImage, headerImageArray
       
       if(indvPark){
 
 
           //   console.log(indvPark.images)
-            images = Object.values(indvPark.images).map((pic, index) => <img style={{width: '100%'}}  src={pic.url} alt="cool park image" />)
-            headerImage = images[0]
-
-            renderedImages = images.forEach((img) => {
-
-            })
+            images = Object.values(indvPark.images).map((pic, index) =><Col xs={{span: 3}}> <div style={{height: '250px', position: 'relative', overflow: 'hidden'}}><Image style={{width: '100%'}}src={pic.url} rounded /></div></Col>)
+            headerImageArray = Object.values(indvPark.images).map((pic, index) => <img style={{width: '100%'}}  src={pic.url} alt="cool park image" />)
+            headerImage = headerImageArray[0]
+            // renderedImages = images.forEach((img) => {
+            //     <Col xs={{span: 2, offset: 3}}>{img}</Col>
+            // })
             activities = Object.values(indvPark.activities).map((park, index) => <span key={index}> {park.name} |</span>)
           //  console.log(typeof indvPark.activities)
           parkfullName = (
@@ -132,8 +132,13 @@ export default function Park(props) {
                 {activities}
               </Col>
             </Row>
+            <h3>Images</h3>
+            <Row>
+              
+              {images}
+            </Row>
           </Container>
-          {images}
+          {/* {images} */}
             
            
         </div>
