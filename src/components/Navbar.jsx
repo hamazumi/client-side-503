@@ -12,8 +12,8 @@ export default function Navigation(props) {
       <Navbar bg="dark" variant="dark">    
         <Nav>
           <Nav.Link href="/" style={{borderRight: '3px solid #454e56', paddingRight: '30px'}}><img src={logoMain} /></Nav.Link>
-          <Nav.Link href="/profile"><FaHeart/></Nav.Link>
-          <Nav.Link href="/"><span onClick={props.handleLogout}>Logout</span></Nav.Link>
+          <Nav.Link style={{marginTop: '20px', paddingLeft: '30px'}} href="/profile"><FaHeart/></Nav.Link>
+          <Nav.Link style={{marginTop: '20px', paddingLeft: '30px'}} href="/"><span onClick={props.handleLogout}>Logout</span></Nav.Link>
         </Nav>
       </Navbar>
     {/* <Link to='/profile'>Profile</Link>
