@@ -5,13 +5,15 @@ import Login from "./Login"
 import '../App.css'
 // import {Button, Dropdown, Card} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { FaCommentsDollar } from "react-icons/fa"
 
+let API_KEY = process.env.REACT_APP_API_KEY
 
 export default function Profile(props) {
 
     // state is information from server
-    const[message, setMessage] = useState([])
-   
+    const [message, setMessage] = useState([])
+   console.log("😁",message)
 
     // hit the auth locked route on the backend
     useEffect(() => {
@@ -26,17 +28,49 @@ export default function Profile(props) {
                 }
 
                 // hit the auth locked endpoint
-                const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/auth-locked`, {headers: authHeaders})
-                
-                // setMessage(response.data.myFavs)
-                const finalMessage = response.data.myFavs.map((favs) => 
-                    <p>
-                        {favs.title}
-                    </p>
-                )
+                await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/auth-locked`, {headers: authHeaders})
+                .then((res) => {
+                    console.log(res)
+                    res.data.myFavs.map((fav) => {
+                         axios.get(`https://developer.nps.gov/api/v1/parks?parkCode=${fav.title}&api_key=${API_KEY}`)
+                        .then((val) => {
+                            if(val.data.data[0] != undefined){
+                                console.log(`😎`,[...message])
+                                let newFav = [...message, {fullName: val.data.data[0].fullName, description: val.data.data[0].description}]
+                                console.log(newFav)
+                                setMessage(newFav)
+                                // setMessage(message.push({fullName: val.data.data[0].fullName, description: val.data.data[0].description}))
+                                
+                            }
+                        })
+                    })
+                })
 
-                setMessage(finalMessage)
+                //     const parkFavsData = res.data.myFavs.map((favs) => {
+                //         axios.get(`https://developer.nps.gov/api/v1/parks?parkCode=${favs.title}&api_key=${API_KEY}`)
+                //         .then((res2) => {
+                //             console.log(res2.data.data[0].fullName)
+                //         }
+                //         )
+                //         // // console.log(info.data.data[0].fullName)
+                //         // return {fullName: info.data.data[0].fullName,
+                //         //     description: info.data.data[0].description}
+                //     })
                 
+                    
+                //     // // setMessage(response.data.myFavs)
+                //     const finalMessage = parkFavsData.map((favs) => 
+    
+                    
+                //         <p>
+                             
+                //             {favs.fullName}
+                //             {favs.description}
+                //         </p>
+                //     )
+                // })
+                
+
             } catch (err) {
                 console.log(err)
                 // log user out if error
@@ -45,7 +79,7 @@ export default function Profile(props) {
         }
         getPrivateMessage()
 
-    }, [props])
+    }, [])
 
     if(!props.currentUser) return <Redirect to='/login' component= {Login} currentUser={props.currentUser} />
 
@@ -62,7 +96,15 @@ export default function Profile(props) {
             </div>
             <ul className="border list-unstyled">
                 <li className="list-unstyled border-danger">
-                        {message}
+                        {message.map((lm) => {
+                            return (
+                                <div>
+
+                                    <p>{lm.fullName}</p>
+                                    <p>{lm.description}</p>
+                                </div>
+                                )
+                            })}
 
                         <br/>
 
