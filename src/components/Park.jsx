@@ -22,6 +22,39 @@ export default function Park(props) {
 
     const [indvPark, setIndvPark] = useState(null)
 
+    const [editFavorite, setEditFavorite] = useState({
+      email: props.currentUser.email
+    })
+
+    async function handleSave(e) {
+      e.preventDefault()
+      // console.log('add to faves')
+      await axios.put(`http://localhost:3001/api-v1/users/park/${id}/add`, editFavorite)
+      .then(
+        (res) => {
+          // console.log('im working!')
+          console.log(res)
+          res.Redirect('/profile')
+        }
+        
+      )
+      .catch((err) =>  console.log(err))
+      // console.log('add to favorites')
+    }
+
+    async function handleDelete(e) {
+      e.preventDefault()
+      // console.log('add to faves')
+      await axios.put(`http://localhost:3001/api-v1/users/park/${id}/delete`, editFavorite)
+      .then(
+        (res) => {
+          // console.log('im working!')
+          console.log(res)
+        }
+      )
+      // console.log('add to favorites')
+    }
+
     const {id} = useParams()
     
     // console.log({id}.id)
@@ -47,7 +80,7 @@ export default function Park(props) {
         getState()
       }, [])
           
-            let images, activities, parkfullName, parkDescription, parkDirectionsInfo, parkDirectionsUrl, parkWeatherInfo, parkUrl, parkStates, renderedImages, headerImage, headerImageArray
+            let images, activities, parkfullName, parkDescription, parkDirectionsInfo, parkDirectionsUrl, parkWeatherInfo, parkUrl, parkStates, renderedImages, headerImage, headerImageArray, parkCode
       
       if(indvPark){
 
@@ -59,6 +92,7 @@ export default function Park(props) {
             // renderedImages = images.forEach((img) => {
             //     <Col xs={{span: 2, offset: 3}}>{img}</Col>
             // })
+            parkCode = indvPark.parkCode
             activities = Object.values(indvPark.activities).map((park, index) => <span key={index}> {park.name} |</span>)
           //  console.log(typeof indvPark.activities)
           parkfullName = (
@@ -111,7 +145,14 @@ export default function Park(props) {
 
              
               <h1>{parkfullName}</h1>
-              <button>Add to favorites</button>
+              <form>
+                {/* <label>{parkCode}</label> */}
+                <input hidden type="text" value={parkCode}/>
+                <button onClick={(e) => handleSave(e)}>Add to favorites</button>
+                <button onClick={(e) => handleDelete(e)}>Delete from favorites</button>
+              </form>
+
+              
               {/* <p>United States of America / <span>{parkStates}</span> / <span>{parkfullName}</span></p> */}
               <h4 className="">Alerts & Conditions</h4>
               <p>{parkWeatherInfo}</p>
