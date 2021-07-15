@@ -2,19 +2,20 @@ import { useState, useEffect } from "react"
 import {Redirect} from "react-router-dom"
 import axios from "axios"
 import Login from "./Login"
-
-
+import '../App.css'
+// import {Button, Dropdown, Card} from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 export default function Profile(props) {
 
     // state is information from server
-    const[message, setMessage] = useState('')
-    const[favorites, setFavorites] = useState('')
+    const[message, setMessage] = useState([])
+   
 
     // hit the auth locked route on the backend
     useEffect(() => {
-        const getPrivateMessage =async () => {
+        const getPrivateMessage = async () => {
             try {
                 // get the jwt from local storage
                 const token = localStorage.getItem('jwtToken')
@@ -26,8 +27,15 @@ export default function Profile(props) {
 
                 // hit the auth locked endpoint
                 const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/auth-locked`, {headers: authHeaders})
-                // set state with data from server
-                setMessage(response.data.msg)
+                
+                // setMessage(response.data.myFavs)
+                const finalMessage = response.data.myFavs.map((favs) => 
+                    <p>
+                        {favs.title}
+                    </p>
+                )
+
+                setMessage(finalMessage)
                 
             } catch (err) {
                 console.log(err)
@@ -42,16 +50,28 @@ export default function Profile(props) {
     if(!props.currentUser) return <Redirect to='/login' component= {Login} currentUser={props.currentUser} />
 
     return(
-        <div>
-            <h4>Greetings {props.currentUser.name}</h4>
-            <h5> Your email is: {props.currentUser.email}</h5>
-           
-
-            <div>
-                <p>You have a message from an authorized user:</p>
-                <p>{message}</p>
-                <p>{favorites}</p>
+        <div className="container-fluid border text-center align-center">
+            <div className="row border">
+                 <h4 className="fs-1">Greetings, {props.currentUser.name}!</h4>
             </div>
+            <div className="row border">
+                <h5> Your email is: {props.currentUser.email}</h5>
+            </div>   
+            <div className="row border"> 
+            {props.currentUser.name}'s Favorite National Parks
+            </div>
+            <ul className="border list-unstyled">
+                <li className="list-unstyled border-danger">
+                        {message}
+
+                        <br/>
+
+Add to favorites
+Alerts & Conditions
+Be prepared for hot, humid weather. The historic homes are not air conditioned. While the visitor center remains open all year, the historic homes are closed from November 1 through April 30.
+
+                </li>
+            </ul>
 
         </div>
     )
