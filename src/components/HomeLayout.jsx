@@ -42,9 +42,9 @@ function HomeLayout(props) {
     return (
       <>
   
-  <div className="container-fluid border text-center align-center" style={{height: "400px", backgroundColor: '#E0FCE6', backgroundImage:`url(${Hero})`, backgroundSize: 'cover'}}> 
+  <div className="container-fluid border text-center align-center" style={{height: "400px", backgroundColor: '#80745b', backgroundImage:`url(${Hero})`, backgroundSize: 'cover'}}> 
 
-    <h1 className="mb-0 font-weight-bold text-white" style={{marginTop: '80px', fontSize: "48px", textShadow: '0 0 4px #7a6c4e' }}>Find your next National Park</h1>
+    <h1 className="mb-0 font-weight-bold text-white" style={{marginTop: '80px', fontSize: "48px", textShadow: '0 0 4px #7a6c4e60' }}>Find your next National Park</h1>
 
   <p className="text-white font-weight-bold" style={{textShadow: '2px 2px 3px #7a6c4e'}}>Enter your state code </p>
   
