@@ -121,9 +121,9 @@ function HomeLayout(props) {
     </div>
   </div>
   
-  <div className="container mt-10" style={{marginTop: '25px'}}>
-  <div className="row">
-  <div className="col-sm text-center">
+  <div className="container">
+  <div className="row mt-4">
+  <div className="col-sm text-center" className="link-primary ">
     <a href="/activities/Hiking">
     <img src={hiking} width="150" height="150" className="rounded-circle" />
     <p className="pt-3">Hiking</p> 
@@ -136,7 +136,7 @@ function HomeLayout(props) {
     </a>
   </div>
   <div className="col-sm text-center">
-    <a href="/activities/Mountain%20Biking">
+    <a className="activities" href="/activities/Mountain%20Biking">
     <img src={mountainBiking} width="150" height="150" className="rounded-circle" />
     <p className="pt-3">Mountain Biking</p>
     </a>

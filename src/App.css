@@ -49,3 +49,8 @@
   background-color: #9E7F41;
   text-decoration: none !important;
 }
+
+.activities a:hover{
+  color: red;
+  
+}
