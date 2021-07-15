@@ -3,11 +3,18 @@ import {Redirect} from "react-router-dom"
 import axios from "axios"
 import Login from "./Login"
 import '../App.css'
+
+import {Button, Dropdown, Card} from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import kb2 from '../resources/images/Kachemak_Bay_2.png'
+import {FaHeart} from 'react-icons/fa'
+
 // import {Button, Dropdown, Card} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaCommentsDollar } from "react-icons/fa"
 
 let API_KEY = process.env.REACT_APP_API_KEY
+
 
 export default function Profile(props) {
 
@@ -57,6 +64,29 @@ export default function Profile(props) {
                 //         //     description: info.data.data[0].description}
                 //     })
                 
+//<<<<<<< main
+//                 // setMessage(response.data.myFavs)
+//                 const finalMessage = parkFavsData.map((favs) => 
+//                 <>
+//                                     <hr/>
+//                     <div className="d-flex flex-column align-items-center justify-content-start">
+
+//                         <img src={kb2} height="200" width="400" alt="Visit parknameHere"/>
+//                            <h3 className="mt-3"> {favs.fullName}</h3>
+                              <p> {favs.description} </p>
+                           
+//                         </div>
+
+
+//                     <div className="mt-3 mb-3">
+//                     <Button className="btn btn-primary btn-sm mb-2"><FaHeart/> &nbsp; Remove Sitka National Park From Your Favorites</Button> <Button className="btn btn-primary btn-sm mb-2">Go To Sitka National Park's Main Page</Button> 
+
+//                     </div>
+//                     </>
+//                 )
+
+//                 setMessage(finalMessage)
+//=======
                     
                 //     // // setMessage(response.data.myFavs)
                 //     const finalMessage = parkFavsData.map((favs) => 
@@ -69,6 +99,7 @@ export default function Profile(props) {
                 //         </p>
                 //     )
                 // })
+//>>>>>>> main
                 
 
             } catch (err) {
@@ -84,17 +115,18 @@ export default function Profile(props) {
     if(!props.currentUser) return <Redirect to='/login' component= {Login} currentUser={props.currentUser} />
 
     return(
-        <div className="container-fluid border text-center align-center">
-            <div className="row border">
-                 <h4 className="fs-1">Greetings, {props.currentUser.name}!</h4>
+
+        <div className="container text-center mt-5 align-center" >
+            <div style={{display: 'grid', placeItems: 'center'}}>
+                 <h1 className="fs-1 text-center fs-1 fw-bold">Greetings, {props.currentUser.name}!</h1>
             </div>
-            <div className="row border">
-                <h5> Your email is: {props.currentUser.email}</h5>
+            <div style={{display: 'grid', placeItems: 'center'}} className="row">
+                <p> Your email is: <span style={{fontStyle: 'italic', color: 'gray'}}>{props.currentUser.email}</span></p>
             </div>   
-            <div className="row border"> 
-            {props.currentUser.name}'s Favorite National Parks
+            <div style={{display: 'grid', placeItems: 'center'}} className="row mb-3"> 
+            <h2>{props.currentUser.name}'s Favorite National Parks:</h2>
             </div>
-            <ul className="border list-unstyled">
+            <ul className="list-unstyled">
                 <li className="list-unstyled border-danger">
                         {message.map((lm) => {
                             return (
@@ -106,15 +138,9 @@ export default function Profile(props) {
                                 )
                             })}
 
-                        <br/>
-
-Add to favorites
-Alerts & Conditions
-Be prepared for hot, humid weather. The historic homes are not air conditioned. While the visitor center remains open all year, the historic homes are closed from November 1 through April 30.
-
                 </li>
             </ul>
-
         </div>
+
     )
 }
