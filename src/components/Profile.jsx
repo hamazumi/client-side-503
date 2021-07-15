@@ -73,7 +73,7 @@ export default function Profile(props) {
 
 //                         <img src={kb2} height="200" width="400" alt="Visit parknameHere"/>
 //                            <h3 className="mt-3"> {favs.fullName}</h3>
-                              <p> {favs.description} </p>
+                            //   <p> {favs.description} </p>
                            
 //                         </div>
 
