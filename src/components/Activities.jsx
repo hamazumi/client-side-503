@@ -31,7 +31,7 @@ export default function Activities(props) {
 // ---------------------------------------------------
     let allAllActivities = []
     props.results.forEach(park => {
-        park.activities.forEach((activity) => allAllActivities.push(activity.name +","+ " " ))
+        park.activities.forEach((activity) => allAllActivities.push(activity.name))
     })
     let allActivities = new Set(allAllActivities)
     let activityArray = [...allActivities]
@@ -63,12 +63,6 @@ export default function Activities(props) {
 
 let searchedActivities = activityArray.filter((activity) => activity.toString().toLowerCase().includes(actSearch.toString().toLowerCase()))
             
-            
-            
-        
-        console.log(searchedActivities)
-        // console.log(typeof allActivities)
-
 
 // ---------------------------------------------------
 // RENDER ALL ACTIVITES AS LINKS
@@ -79,7 +73,7 @@ let searchedActivities = activityArray.filter((activity) => activity.toString().
          
           
           <li className="parkList text-decoration-none" style={{ listStyleType: "none" }}> 
-          <Link style={{ color: "black", fontWeight: "bold" }} to={`/activities`}>{activity}</Link>
+          <Link style={{ color: "black", fontWeight: "bold" }} to={`/activities/${activity}`}>{activity}</Link>
           </li>
           
 

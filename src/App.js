@@ -9,6 +9,7 @@ import ParkResult from './components/ParkResult.jsx'
 import Park from './components/Park.jsx'
 import HomeLayout from './components/HomeLayout.jsx'
 import Activities from './components/Activities.jsx'
+import ActivityPage from './components/ActivityPage.jsx'
 
 
 import {
@@ -116,7 +117,7 @@ function App() {
           />
           <Route 
             exact path="/activities/:id"
-            render={() => <Park results={results} />}
+            render={() => <ActivityPage results={results} />}
           />
           
         </Switch>
