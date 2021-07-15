@@ -22,14 +22,37 @@ export default function Park(props) {
 
     const [indvPark, setIndvPark] = useState(null)
 
-    const [addFavorite, setAddFavorite] = useState({
-      title: ''
+    const [editFavorite, setEditFavorite] = useState({
+      email: props.currentUser.email
     })
 
-    async function handleSave(event) {
-      event.preventDefault()
-      // await axios.put('https://localhost:3001/profile')
-      console.log('add to favorites')
+    async function handleSave(e) {
+      e.preventDefault()
+      // console.log('add to faves')
+      await axios.put(`http://localhost:3001/api-v1/users/park/${id}/add`, editFavorite)
+      .then(
+        (res) => {
+          // console.log('im working!')
+          console.log(res)
+          res.Redirect('/profile')
+        }
+        
+      )
+      .catch((err) =>  console.log(err))
+      // console.log('add to favorites')
+    }
+
+    async function handleDelete(e) {
+      e.preventDefault()
+      // console.log('add to faves')
+      await axios.put(`http://localhost:3001/api-v1/users/park/${id}/delete`, editFavorite)
+      .then(
+        (res) => {
+          // console.log('im working!')
+          console.log(res)
+        }
+      )
+      // console.log('add to favorites')
     }
 
     const {id} = useParams()
@@ -123,10 +146,12 @@ export default function Park(props) {
              
               <h1>{parkfullName}</h1>
               <form>
-                <label>{parkCode}</label>
+                {/* <label>{parkCode}</label> */}
                 <input hidden type="text" value={parkCode}/>
-                <button onClick={() => {handleSave()}}>Add to favorites</button>
+                <button onClick={(e) => handleSave(e)}>Add to favorites</button>
+                <button onClick={(e) => handleDelete(e)}>Delete from favorites</button>
               </form>
+
               
               {/* <p>United States of America / <span>{parkStates}</span> / <span>{parkfullName}</span></p> */}
               <h4 className="">Alerts & Conditions</h4>
