@@ -10,6 +10,7 @@ export default function Profile(props) {
 
     // state is information from server
     const[message, setMessage] = useState('')
+    const[favorites, setFavorites] = useState('')
 
     // hit the auth locked route on the backend
     useEffect(() => {
@@ -35,6 +36,7 @@ export default function Profile(props) {
             }
         }
         getPrivateMessage()
+
     }, [props])
 
     if(!props.currentUser) return <Redirect to='/login' component= {Login} currentUser={props.currentUser} />
@@ -43,10 +45,12 @@ export default function Profile(props) {
         <div>
             <h4>Greetings {props.currentUser.name}</h4>
             <h5> Your email is: {props.currentUser.email}</h5>
+           
 
             <div>
                 <p>You have a message from an authorized user:</p>
                 <p>{message}</p>
+                <p>{favorites}</p>
             </div>
 
         </div>
