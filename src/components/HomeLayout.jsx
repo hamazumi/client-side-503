@@ -16,9 +16,6 @@ import { useEffect, useState } from 'react';
 import {Link, useHistory} from 'react-router-dom'
 import '../App.css'
 
-// let API_KEY = process.env.REACT_APP_API_KEY
-// console.log(API_KEY)
-
 function HomeLayout(props) {
 
   const history = useHistory()
@@ -47,7 +44,7 @@ function HomeLayout(props) {
   
   <div className="container-fluid border text-center align-center" style={{height: "400px", backgroundColor: '#E0FCE6', backgroundImage:`url(${Hero})`, backgroundSize: 'cover'}}> 
 
-    <h1 className="mb-0 font-weight-bold text-white" style={{marginTop: '80px', fontSize: "48px", textShadow: '2px 2px 3px #7a6c4e' }}>Find your next National Park</h1>
+    <h1 className="mb-0 font-weight-bold text-white" style={{marginTop: '80px', fontSize: "48px", textShadow: '0 0 4px #7a6c4e' }}>Find your next National Park</h1>
 
   <p className="text-white font-weight-bold" style={{textShadow: '2px 2px 3px #7a6c4e'}}>Enter your state code </p>
   
@@ -115,7 +112,7 @@ function HomeLayout(props) {
       <img height="150px" variant="top" className="rounded" style={{borderRadius: '35px', boxShadow: "5px 5px 5px lightgray"}} src={nf1} />
       <Card.Body>
         <p>
-        Fire Island National Seashore<span className="font-weight-light font-italic"> &mdash; Patchogue, NY</span> 
+        Fire Island National<span className="font-weight-light font-italic"> &mdash; Patchogue, NY</span> 
         </p>
         <Button variant="primary" size="sm" onClick={(e) => {e.preventDefault(); window.location.href='park/fiis';}}>Visit Fire Island National Seashore</Button>
       </Card.Body>
