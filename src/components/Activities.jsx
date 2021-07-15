@@ -27,27 +27,26 @@ export default function Activities(props) {
     const [actSearch, setActSearch]=  useState("")
     
   
-    // console.log(props.results)
-    // const filterAll = props.results.filter((park) => {
 
-    //     return park.activities.filter((activity) => activity.name.toString().toLowerCase().includes(actSearch.toString().toLowerCase()))
-    // })
 // ---------------------------------------------------
     let allAllActivities = []
     props.results.forEach(park => {
         park.activities.forEach((activity) => allAllActivities.push(activity.name))
     })
     let allActivities = new Set(allAllActivities)
-    console.log(allActivities)
+    let activityArray = [...allActivities]
     
+
 {/* <li  className="parkList text-decoration-none" style={{ listStyleType: "none" }}> <Link style={{ color: "black", fontWeight: "bold" }}  to={`/activities`}>{activity.name}</Link></li>) */}
 
-
+    
 
 // ---------------------------------------------------
-let filteredActivities = []
-// const handleSearch = (e) => {
-    // e.preventDefault()
+// FILTER PARKS BY ACTIVITY:
+
+        let filteredActivities = []
+
+    
         props.results.forEach(park => {
             let y = (park.activities.filter((activity) => activity.name.toString().toLowerCase().includes(actSearch.toString().toLowerCase())))
             
@@ -58,30 +57,35 @@ let filteredActivities = []
             }
             
         })
-        console.log(filteredActivities)
-        const renderParks = allActivities.map((activity, index) => 
-        <>
-          {/* <hr/>Park code: {park.parkCode} */}
+// ---------------------------------------------------
+// SEARCH ACTIVITIES: 
+
+
+let searchedActivities = activityArray.filter((activity) => activity.toString().toLowerCase().includes(actSearch.toString().toLowerCase()))
+            
+
+// ---------------------------------------------------
+// RENDER ALL ACTIVITES AS LINKS
+        let renderParks
+        if(activityArray != []){
+
+            renderParks = searchedActivities.map((activity, index) => 
+         
           
-          <li  className="parkList text-decoration-none" style={{ listStyleType: "none" }}> 
-          <Link style={{ color: "black", fontWeight: "bold" }}  to={`/activities`}>{activity.name}</Link>
+          <li className="parkList text-decoration-none" style={{ listStyleType: "none" }}> 
+          <Link style={{ color: "black", fontWeight: "bold" }} to={`/activities/${activity}`}>{activity}</Link>
           </li>
           
-          </>
-        )
-        
-        
-        // <div key={index}>{park.fullName}</div>)
-    // }
 
+        
+
+        
+        )
+    }
+   
 
 // ------------------------------------------------------------
-    // console.log(filteredActivities)
-     
-    // console.log(filterAll)
 
-
-   
 
     //filter by activity, have a form option that adds it to the 
 
@@ -94,7 +98,7 @@ let filteredActivities = []
     
     return(
         <div>
-            Activities Page:
+            Search Activities Page:
             
                 <form action="/activities" >
                     <h1></h1>
@@ -108,8 +112,7 @@ let filteredActivities = []
 
                     <ul style={{backgroundColor: "white"}} >
                         {renderParks}
-                        {/* {filteredActivities} */}
-                        
+                      
                     </ul>
                 </div>
         </div>
