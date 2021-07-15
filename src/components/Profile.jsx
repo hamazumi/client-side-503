@@ -6,7 +6,7 @@ import '../App.css'
 import {Button, Dropdown, Card} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import kb2 from '../resources/images/Kachemak_Bay_2.png'
-
+import {FaHeart} from 'react-icons/fa'
 
 export default function Profile(props) {
 
@@ -32,16 +32,18 @@ export default function Profile(props) {
                 // setMessage(response.data.myFavs)
                 const finalMessage = response.data.myFavs.map((favs) => 
                 <>
-                    <div className="d-flex flex-row align-items-start justify-content-start border">
+                                    <hr/>
+                    <div className="d-flex flex-column align-items-center justify-content-start">
+
                         <img src={kb2} height="200" width="400" alt="Visit parknameHere"/>
-                           <h3>Sitka National Park</h3>
-                        </div>
-                        <div>
-                     
+                           <h3 className="mt-3">Sitka More Text Here National Park - Sitka AK</h3>
+                           
                         </div>
 
-                    <div className="">
-                    <Button className="btn btn-primary btn-sm">Remove This Park From Your Favorites</Button> <Button className="btn btn-primary btn-sm">Go To This Park's Main Page</Button> 
+
+                    <div className="mt-3 mb-3">
+                    <Button className="btn btn-primary btn-sm mb-2"><FaHeart/> &nbsp; Remove Sitka National Park From Your Favorites</Button> <Button className="btn btn-primary btn-sm mb-2">Go To Sitka National Park's Main Page</Button> 
+
                     </div>
                     </>
                 )
@@ -62,7 +64,6 @@ export default function Profile(props) {
 
     return(
 
-
         <div className="container text-center mt-5 align-center" >
             <div style={{display: 'grid', placeItems: 'center'}}>
                  <h1 className="fs-1 text-center fs-1 fw-bold">Greetings, {props.currentUser.name}!</h1>
@@ -73,12 +74,13 @@ export default function Profile(props) {
             <div style={{display: 'grid', placeItems: 'center'}} className="row mb-3"> 
             <h2>{props.currentUser.name}'s Favorite National Parks:</h2>
             </div>
-            <ul className="border list-unstyled">
+            <ul className="list-unstyled">
                 <li className="list-unstyled border-danger">
                         {message}
 
                 </li>
             </ul>
         </div>
+
     )
 }
