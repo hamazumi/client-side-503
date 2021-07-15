@@ -4,7 +4,7 @@ import Navigation from './components/Navbar.jsx'
 import Login from './components/Login.jsx'
 import Register from './components/Register.jsx'
 import Profile from './components/Profile.jsx'
-import Welcome from './components/Welcome.jsx'
+
 import ParkResult from './components/ParkResult.jsx'
 import Park from './components/Park.jsx'
 import HomeLayout from './components/HomeLayout.jsx'
@@ -62,8 +62,8 @@ function App() {
         try{
           const response = await axios.get(`https://developer.nps.gov/api/v1/parks?limit=600&api_key=${API_KEY}`)
           setResults(response.data.data)
-          console.log('testing testing testing')
-          console.log(response.data)
+          
+          // console.log(response.data)
         } catch (err) {
           console.log(err)
         }
