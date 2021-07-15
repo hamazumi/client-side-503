@@ -30,7 +30,7 @@ export default function Profile(props) {
                 // setMessage(response.data.myFavs)
                 const finalMessage = response.data.myFavs.map((favs) => 
                     <p>
-                        {favs}
+                        {favs.title}
                     </p>
                 )
 
