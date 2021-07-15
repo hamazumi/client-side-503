@@ -1,13 +1,6 @@
 import React from 'react'
 import {Button, Dropdown, Card} from 'react-bootstrap'
-// import bg1 from '../resources/images/nature_placeholder1.jpg' 
-// import logo from '../resources/images/Logo.png'
 import Hero from '../resources/images/Hero.png'
-// import np1 from '../resources/images/np1.png'
-// import np2 from '../resources/images/np2.png'
-// import np3 from '../resources/images/np3.png'
-// import np4 from '../resources/images/np4.png'
-// import np5 from '../resources/images/np5.png'
 import kb2 from '../resources/images/Kachemak_Bay_2.png'
 import iv1 from '../resources/images/Iao_Valley_1.png'
 import ec1 from '../resources/images/Eldorado_Canyon_1.png'
@@ -17,16 +10,22 @@ import fishing from '../resources/images/Fishing_1.png'
 import mountainBiking from '../resources/images/Mountain_Biking_1.png'
 import birdWatching from '../resources/images/Bird_Watching_1.png'
 import backpacking from '../resources/images/Backpacking_1.png'
+import FormFileInput from 'react-bootstrap/esm/FormFileInput';
 import axios from 'axios'
 import { useEffect, useState } from 'react';
-import FormFileInput from 'react-bootstrap/esm/FormFileInput';
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import '../App.css'
 
-let API_KEY = process.env.REACT_APP_API_KEY
-console.log(API_KEY)
+// let API_KEY = process.env.REACT_APP_API_KEY
+// console.log(API_KEY)
 
 function HomeLayout(props) {
+
+  const history = useHistory()
+
+  function handleClick(path) {
+    history.push(path)
+  }
 
     const [search, setSearch] = useState("")
     
@@ -46,7 +45,6 @@ function HomeLayout(props) {
     return (
       <>
   
-
   <div className="container-fluid border text-center align-center" style={{height: "400px", backgroundColor: '#E0FCE6', backgroundImage:`url(${Hero})`, backgroundSize: 'cover'}}> 
 
     <h1 className="mb-0 font-weight-bold text-white" style={{marginTop: '80px', fontSize: "48px", textShadow: '2px 2px 3px #7a6c4e' }}>Find your next National Park</h1>
@@ -85,8 +83,7 @@ function HomeLayout(props) {
       Sitka National Historical Park
       <span className="font-weight-light font-italic"> &mdash; Sitka, AK</span> 
       </p>
-    {/* <Button variant="primary" size="sm" href="park/sitk">Visit Sitka National Historical Park</Button> */}
-    <Button variant="primary" size="sm" href="park/sitk">Visit Sitka National Historical Park</Button>
+    <Button variant="primary" size="sm" onClick={(e) => {e.preventDefault(); window.location.href='park/sitk';}}>Visit Sitka National Historical Park</Button>
     </Card.Body>
     </Card>
     {/* Card end */}
@@ -97,7 +94,7 @@ function HomeLayout(props) {
         <p>
         Kalaupapa Historical Park<span className="font-weight-light font-italic"> &mdash; Kalaupapa, Hawaii</span> 
         </p>
-        <Button variant="primary" size="sm">Visit Kalaupapa Historical Park</Button>
+        <Button variant="primary" size="sm" onClick={(e) => {e.preventDefault(); window.location.href='park/kala';}}>Visit Kalaupapa Historical Park</Button>
       </Card.Body>
     </Card>
     {/* Card end */}
@@ -108,7 +105,7 @@ function HomeLayout(props) {
         <p>
         Dinosaur National Monument<span className="font-weight-light font-italic"> &mdash; Jensen, UT</span> 
         </p>
-        <Button variant="primary" size="sm">Visit Eldorado Canyon State Park</Button>
+        <Button variant="primary" size="sm" onClick={(e) => {e.preventDefault(); window.location.href='park/dino';}}>Visit Dinosaur National Monument</Button>
       </Card.Body>
     </Card>
     {/* Card end */}
@@ -120,7 +117,7 @@ function HomeLayout(props) {
         <p>
         Fire Island National Seashore<span className="font-weight-light font-italic"> &mdash; Patchogue, NY</span> 
         </p>
-        <Button variant="primary" size="sm">Visit Fire Island National Seashore</Button>
+        <Button variant="primary" size="sm" onClick={(e) => {e.preventDefault(); window.location.href='park/fiis';}}>Visit Fire Island National Seashore</Button>
       </Card.Body>
     </Card>
     {/* Card end */}
@@ -154,7 +151,7 @@ function HomeLayout(props) {
   </div>
 
       </>
-    );
+    )
   }
     
 
