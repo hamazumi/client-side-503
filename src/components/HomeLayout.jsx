@@ -82,10 +82,11 @@ function HomeLayout(props) {
       <img height="150px" variant="top" className="rounded" style={{borderRadius: '35px', boxShadow: "5px 5px 5px lightgray", overflow: 'hidden'}} src={kb2} />
       <Card.Body>
       <p>
-      Kachemak Bay State Park
-      <span className="font-weight-light font-italic"> &mdash; Homer, Alaska</span> 
+      Sitka National Historical Park
+      <span className="font-weight-light font-italic"> &mdash; Sitka, AK</span> 
       </p>
-    <Button variant="primary" size="sm">Visit Kachemak Bay State Park</Button>
+    {/* <Button variant="primary" size="sm" href="park/sitk">Visit Sitka National Historical Park</Button> */}
+    <Button variant="primary" size="sm" href="park/sitk">Visit Sitka National Historical Park</Button>
     </Card.Body>
     </Card>
     {/* Card end */}
@@ -94,18 +95,18 @@ function HomeLayout(props) {
     <img height="150px" variant="top" className="rounded" style={{borderRadius: '35px', boxShadow: "5px 5px 5px lightgray"}} src={iv1} />
       <Card.Body>
         <p>
-        Iao Valley State Park <span className="font-weight-light font-italic"> &mdash; Wailuku, Hawaii</span> 
+        Kalaupapa Historical Park<span className="font-weight-light font-italic"> &mdash; Kalaupapa, Hawaii</span> 
         </p>
-        <Button variant="primary" size="sm">Visit Iao Valley State Park</Button>
+        <Button variant="primary" size="sm">Visit Kalaupapa Historical Park</Button>
       </Card.Body>
     </Card>
     {/* Card end */}
     {/* Card */}
       <Card style={{ width: '25%' }}>
         <img height="150px" variant="top" className="rounded" style={{borderRadius: '35px', boxShadow: "5px 5px 5px lightgray"}} src={ec1} />
-        <Card.Body>
+        <Card.Body className="mb-2">
         <p>
-        Eldorado Canyon State Park <span className="font-weight-light font-italic"> &mdash; Eldorado Springs, Colorado</span> 
+        Dinosaur National Monument<span className="font-weight-light font-italic"> &mdash; Jensen, UT</span> 
         </p>
         <Button variant="primary" size="sm">Visit Eldorado Canyon State Park</Button>
       </Card.Body>
@@ -117,9 +118,9 @@ function HomeLayout(props) {
       <img height="150px" variant="top" className="rounded" style={{borderRadius: '35px', boxShadow: "5px 5px 5px lightgray"}} src={nf1} />
       <Card.Body>
         <p>
-        Niagara Falls State Park <span className="font-weight-light font-italic"> &mdash; Niagara Falls, New York</span> 
+        Fire Island National Seashore<span className="font-weight-light font-italic"> &mdash; Patchogue, NY</span> 
         </p>
-        <Button variant="primary" size="sm">Visit Niagara Falls State Park</Button>
+        <Button variant="primary" size="sm">Visit Fire Island National Seashore</Button>
       </Card.Body>
     </Card>
     {/* Card end */}
