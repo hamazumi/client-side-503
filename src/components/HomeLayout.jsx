@@ -124,24 +124,34 @@ function HomeLayout(props) {
   <div className="container mt-10" style={{marginTop: '25px'}}>
   <div className="row">
   <div className="col-sm text-center">
-  <img src={hiking} width="150" height="150" className="rounded-circle" />
-  <p className="pt-3">Hiking</p>
+    <a href="/activities/Hiking">
+    <img src={hiking} width="150" height="150" className="rounded-circle" />
+    <p className="pt-3">Hiking</p> 
+    </a>
   </div>
   <div className="col-sm text-center">
-  <img src={fishing} width="150" height="150" className="rounded-circle" />
-  <p className="pt-3">Fishing</p>
+    <a href="/activities/Fishing">
+    <img src={fishing} width="150" height="150" className="rounded-circle" />
+    <p className="pt-3">Fishing</p>
+    </a>
   </div>
   <div className="col-sm text-center">
-  <img src={mountainBiking} width="150" height="150" className="rounded-circle" />
-  <p className="pt-3">Mountain Biking</p>
+    <a href="/activities/Mountain%20Biking">
+    <img src={mountainBiking} width="150" height="150" className="rounded-circle" />
+    <p className="pt-3">Mountain Biking</p>
+    </a>
   </div>
   <div className="col-sm text-center">
-  <img src={birdWatching} width="150" height="150" className="rounded-circle" />
-  <p className="pt-3">Bird Watching</p>
+    <a href="/activities/Birdwatching">
+    <img src={birdWatching} width="150" height="150" className="rounded-circle" />
+    <p className="pt-3">Bird Watching</p>
+    </a>
   </div>
   <div className="col-sm text-center">
-  <img src={backpacking} width="150" height="150" className="rounded-circle" />
-  <p className="pt-3">Backpacking</p>
+  <a href="/activities/Backpacking">
+    <img src={backpacking} width="150" height="150" className="rounded-circle" />
+    <p className="pt-3">Backpacking</p>
+    </a>
   </div>
   </div>
   <div className="bg-light small text-right text-muted" style={{height: '50px', padding: '10px'}}>&copy; 2021 - Park Hopper</div>
