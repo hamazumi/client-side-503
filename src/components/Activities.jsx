@@ -1,6 +1,6 @@
 
 import axios from 'axios' 
-
+import {Link} from 'react-router-dom'
 import {
     BrowserRouter as Router,
     Switch,
@@ -28,18 +28,58 @@ export default function Activities(props) {
     
   
     // console.log(props.results)
-    const filterAll = props.results.filter((park) => {
+    // const filterAll = props.results.filter((park) => {
 
-        return park.activities.filter((activity) => activity.name.toString().toLowerCase().includes(actSearch.toString().toLowerCase()))
+    //     return park.activities.filter((activity) => activity.name.toString().toLowerCase().includes(actSearch.toString().toLowerCase()))
+    // })
+// ---------------------------------------------------
+    let allAllActivities = []
+    props.results.forEach(park => {
+        park.activities.forEach((activity) => allAllActivities.push(activity.name))
     })
+    let allActivities = new Set(allAllActivities)
+    console.log(allActivities)
+    
+{/* <li  className="parkList text-decoration-none" style={{ listStyleType: "none" }}> <Link style={{ color: "black", fontWeight: "bold" }}  to={`/activities`}>{activity.name}</Link></li>) */}
 
-    let x  = props.results.forEach(park => console.log(park.activities.filter((activity) => activity.name.toString().toLowerCase().includes(actSearch.toString().toLowerCase()))))
-    if(x > 0){
-        console.log("yepa")
-    }
+
+
+// ---------------------------------------------------
+let filteredActivities = []
+// const handleSearch = (e) => {
+    // e.preventDefault()
+        props.results.forEach(park => {
+            let y = (park.activities.filter((activity) => activity.name.toString().toLowerCase().includes(actSearch.toString().toLowerCase())))
+            
+            if(y.length != 0){
+                filteredActivities.push(<li  className="parkList text-decoration-none" style={{ listStyleType: "none" }}> <Link style={{ color: "black", fontWeight: "bold" }}  to={`/park/${park.parkCode}`}>{park.fullName}</Link></li>)
+                
+                
+            }
+            
+        })
+        console.log(filteredActivities)
+        const renderParks = allActivities.map((activity, index) => 
+        <>
+          {/* <hr/>Park code: {park.parkCode} */}
+          
+          <li  className="parkList text-decoration-none" style={{ listStyleType: "none" }}> 
+          <Link style={{ color: "black", fontWeight: "bold" }}  to={`/activities`}>{activity.name}</Link>
+          </li>
+          
+          </>
+        )
+        
+        
+        // <div key={index}>{park.fullName}</div>)
+    // }
+
+
+// ------------------------------------------------------------
+    // console.log(filteredActivities)
+     
     // console.log(filterAll)
 
-    const renderParks = filterAll.map((park, index) => <div key={index}>{park.fullName}</div>)
 
    
 
@@ -55,19 +95,21 @@ export default function Activities(props) {
     return(
         <div>
             Activities Page:
-            {/* {renderParks} */}
-                <form action="/results" >
+            
+                <form action="/activities" >
                     <h1></h1>
                     <input type="text" id="search" onChange={e => setActSearch(e.target.value)}/>
                     <br/>
                     <br/>
-                    {/* <input type="submit" onSubmit={e => props.setResults(renderParks)} /> */}
+                    {/* <input type="submit" onClick={e => props.setResults(handleSearch)} /> */}
 
                 </form>
-                <div className="textboxSearch" style={{width: "450px"}}>
+                <div >
 
                     <ul style={{backgroundColor: "white"}} >
                         {renderParks}
+                        {/* {filteredActivities} */}
+                        
                     </ul>
                 </div>
         </div>
