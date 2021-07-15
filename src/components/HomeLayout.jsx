@@ -35,7 +35,7 @@ function HomeLayout(props) {
     })
     
     const renderParks = filterParks.map((park, index) => 
-    <>
+      <>
       {/* <hr/>Park code: {park.parkCode} */}
       <li className="parkList text-decoration-none" style={{ listStyleType: "none" }}>
         <Link style={{ color: "white", fontWeight: "bold" }}  to={`/park/${park.parkCode}`}>{park.fullName}</Link>

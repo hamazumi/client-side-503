@@ -9,8 +9,8 @@ import Login from "./Login"
 export default function Profile(props) {
 
     // state is information from server
-    const[message, setMessage] = useState('')
-    const[favorites, setFavorites] = useState('')
+    const[message, setMessage] = useState([])
+   
 
     // hit the auth locked route on the backend
     useEffect(() => {
@@ -26,8 +26,15 @@ export default function Profile(props) {
 
                 // hit the auth locked endpoint
                 const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/auth-locked`, {headers: authHeaders})
-                // set state with data from server
-                setMessage(response.data.msg)
+                
+                // setMessage(response.data.myFavs)
+                const finalMessage = response.data.myFavs.map((favs) => 
+                    <p>
+                        {favs.title}
+                    </p>
+                )
+
+                setMessage(finalMessage)
                 
             } catch (err) {
                 console.log(err)
@@ -48,9 +55,8 @@ export default function Profile(props) {
            
 
             <div>
-                <p>You have a message from an authorized user:</p>
-                <p>{message}</p>
-                <p>{favorites}</p>
+               <p>{props.currentUser.name}'s Favorite National Parks</p>
+                {message}
             </div>
 
         </div>
