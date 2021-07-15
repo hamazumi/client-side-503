@@ -98,7 +98,7 @@ let searchedActivities = activityArray.filter((activity) => activity.toString().
     
     return(
         <div>
-            Activities Page:
+            Search Activities Page:
             
                 <form action="/activities" >
                     <h1></h1>
