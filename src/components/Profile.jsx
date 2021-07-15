@@ -26,16 +26,15 @@ export default function Profile(props) {
 
                 // hit the auth locked endpoint
                 const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/auth-locked`, {headers: authHeaders})
-                // set state with data from server
-                let finalMessage = [] 
-
-                response.data.myFavs.forEach(favs => {
-                    // finalMessage += favs + ', '
-                    finalMessage.push(favs)
-                })
+                
+                // setMessage(response.data.myFavs)
+                const finalMessage = response.data.myFavs.map((favs) => 
+                    <p>
+                        {favs}
+                    </p>
+                )
 
                 setMessage(finalMessage)
-                // setMessage(response.data.myFavs)
                 
             } catch (err) {
                 console.log(err)
@@ -56,8 +55,8 @@ export default function Profile(props) {
            
 
             <div>
-                <p>You have a message from an authorized user:</p>
-                <p>{message}</p>
+               <p>{props.currentUser.name}'s Favorite National Parks</p>
+                {message}
             </div>
 
         </div>
