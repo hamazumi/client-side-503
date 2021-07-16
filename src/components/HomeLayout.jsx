@@ -42,7 +42,7 @@ function HomeLayout(props) {
     return (
       <>
   
-  <div className="container-fluid border text-center align-center" style={{height: "400px", backgroundColor: '#80745b', backgroundImage:`url(${Hero})`, backgroundSize: 'cover'}}> 
+  <div className="container-fluid border border-dark text-center align-center" style={{height: "400px", backgroundColor: '#80745b', backgroundImage:`url(${Hero})`, backgroundSize: 'cover'}}> 
 
     <h1 className="mb-0 font-weight-bold text-white" style={{marginTop: '80px', fontSize: "48px", textShadow: '0 0 4px #7a6c4e60' }}>Find your next National Park</h1>
 
@@ -57,7 +57,7 @@ function HomeLayout(props) {
 
 <div className="d-flex align-items-center text-justify">
   <div className="textboxSearch" style={{width: '500px', height: '173px', margin: '0 auto', border: '0'}}>
-    <ul className="text-decoration-none" style={{ background: 'rgba(169, 143, 84, .8)', textShadow: '1px 1px 1px #7a6c4e' }}>
+    <ul className="text-decoration-none" style={{background: 'rgba(169, 143, 84, .8)', textShadow: '1px 1px 1px #7a6c4e'}}>
     {renderParks}
     </ul>
 
@@ -123,7 +123,7 @@ function HomeLayout(props) {
   
   <div className="container">
   <div className="row mt-4">
-  <div className="col-sm text-center" className="link-primary ">
+  <div className="col-sm text-center link-primary">
     <a href="/activities/Hiking">
     <img src={hiking} width="150" height="150" className="rounded-circle" />
     <p className="pt-3">Hiking</p> 

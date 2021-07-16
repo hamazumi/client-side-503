@@ -32,7 +32,7 @@ export default function Profile(props) {
                 // setMessage(response.data.myFavs)
                 const finalMessage = response.data.myFavs.map((favs) => 
                 <>
-                                    <hr/>
+                   <hr/>
                     <div className="d-flex flex-column align-items-center justify-content-start">
 
                         <img src={kb2} height="200" width="400" alt="Visit parknameHere"/>
