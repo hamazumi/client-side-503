@@ -79,15 +79,24 @@ export default function Profile(props) {
                         
                 })
 
-            } catch (err) {
-                console.log(err)
-                    // log user out if error
-                    props.handleLogout()
-                }
+
+
+
+
             
+            
+
+
+            
+        } catch (err) {
+            console.log(err)
+                // log user out if error
+                props.handleLogout()
             }
-                getPrivateMessage()
-        }, [])
+        
+        }
+            getPrivateMessage()
+    }, [])
 
     if(!props.currentUser) return <Redirect to='/login' component= {Login} currentUser={props.currentUser} />
 
@@ -119,9 +128,9 @@ export default function Profile(props) {
                                 
                                 
                                                      <div className="mt-3 mb-3">
-                                                     <Button onClick={(e) => handleDelete(e)} className="btn btn-primary btn-sm mb-2"  ><FaHeart/> &nbsp; Remove {lm.fullName} From Your Favorites</Button> 
+                                                     {/* <Button onClick={(e) => handleDelete(e)} className="btn btn-primary btn-sm mb-2"  ><FaHeart/> &nbsp; Remove {lm.fullName} From Your Favorites</Button>  */}
                             
-                                                     </div> */}
+                                                     </div>
                                                  </>
                                              )
                                 
