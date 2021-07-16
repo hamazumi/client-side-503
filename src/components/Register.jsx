@@ -10,6 +10,7 @@ import {Form, Button, Container, Row, Col, Jumbotron} from 'react-bootstrap'
 
 
 export default function Register(props) {
+    console.log("😎", process.env.REACT_APP_SERVER_URL)
     // state for the controlled form
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
