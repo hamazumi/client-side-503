@@ -66,10 +66,6 @@ export default function Profile(props) {
 
                         <br/>
 
-Add to favorites
-Alerts & Conditions
-Be prepared for hot, humid weather. The historic homes are not air conditioned. While the visitor center remains open all year, the historic homes are closed from November 1 through April 30.
-
                 </li>
             </ul>
 
