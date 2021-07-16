@@ -64,7 +64,7 @@ function App() {
           const response = await axios.get(`https://developer.nps.gov/api/v1/parks?limit=600&api_key=${API_KEY}`)
           setResults(response.data.data)
           
-          // console.log(response.data)
+          console.log(response.data)
         } catch (err) {
           console.log(err)
         }
