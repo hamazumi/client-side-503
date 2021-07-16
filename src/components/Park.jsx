@@ -20,24 +20,30 @@ import {
 
 export default function Park(props) {
 
+
+  // await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/auth-locked`, {headers: authHeaders})
+  // .then((res) => {
+  //     console.log(res)
+
+  //     let ansArray = []
+  //     console.log(res.data.myFavs)
+  // })
+
+
     const [indvPark, setIndvPark] = useState(null)
 
-    // const [editFavorite, setEditFavorite] = useState({
-    //   email: props.currentUser.email
-    // })
 
     async function handleSave(e) {
       e.preventDefault()
       // console.log('add to faves')
       await axios.put(`http://localhost:3001/api-v1/users/park/${id}/add`, {email : props.currentUser.email})
-      
     }
 
     async function handleDelete(e) {
       e.preventDefault()
       // console.log('add to faves')
       await axios.put(`http://localhost:3001/api-v1/users/park/${id}/delete`, {email : props.currentUser.email})
-      
+     
     }
 
     const {id} = useParams()
@@ -67,6 +73,8 @@ export default function Park(props) {
           
             let images, activities, parkfullName, parkDescription, parkDirectionsInfo, parkDirectionsUrl, parkWeatherInfo, parkUrl, parkStates, renderedImages, headerImage, headerImageArray, parkCode
       
+
+      // --------- to make sure things dont load before call is finished -------------      
       if(indvPark){
 
 

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import {Redirect} from "react-router-dom"
+import {Redirect, useParams, Link} from "react-router-dom"
 import axios from "axios"
 import Login from "./Login"
 import '../App.css'
@@ -17,6 +17,11 @@ let API_KEY = process.env.REACT_APP_API_KEY
 
 
 export default function Profile(props) {
+
+
+    
+
+      
 
     // state is information from server
     const [message, setMessage] = useState([])
@@ -51,7 +56,7 @@ export default function Profile(props) {
                                 try{
                                     await axios.get(`https://developer.nps.gov/api/v1/parks?parkCode=${park}&api_key=${API_KEY}`)
                                     .then((val) => { 
-                                        let ans = {fullName: val.data.data[0].fullName, description: val.data.data[0].description}
+                                        let ans = {fullName: val.data.data[0].fullName, description: val.data.data[0].description, code: val.data.data[0].parkCode}
                                         apiAnsArray.push(ans)
                                     })
                                 } catch(err){
@@ -59,6 +64,15 @@ export default function Profile(props) {
                                 }
                             } 
                         }
+                        
+                        // async function handleDelete(e) {
+                        //     for await (let park of ansArray){
+                        //     e.preventDefault()
+                        //     // console.log('add to faves')
+                        //     await axios.put(`http://localhost:3001/api-v1/users/park/${park}/delete`, {email : props.currentUser.email})
+                           
+                        //   }}
+
                         favsAPICall()
                         setMessage(apiAnsArray)
                         
@@ -97,14 +111,14 @@ export default function Profile(props) {
                                                      <div className="d-flex flex-column align-items-center justify-content-start">
                                 
                                                          <img src={kb2} height="200" width="400" alt="Visit parknameHere"/>
-                                                            <h3 className="mt-3"> {lm.fullName}</h3>
+                                                            <Link to={`/park/${lm.code}`}><h3 className="mt-3"> {lm.fullName}</h3></Link>
                                    <p> {lm.description} </p>
                                 
                                                          </div>
                                 
                                 
                                                      <div className="mt-3 mb-3">
-                                                     <Button className="btn btn-primary btn-sm mb-2"><FaHeart/> &nbsp; Remove {lm.fullName} From Your Favorites</Button> <Button className="btn btn-primary btn-sm mb-2">Go To {lm.fullName}'s Main Page</Button> 
+                                                     <Button className="btn btn-primary btn-sm mb-2"  ><FaHeart/> &nbsp; Remove {lm.fullName} From Your Favorites</Button> 
                             
                                                      </div>
                                                  </>
