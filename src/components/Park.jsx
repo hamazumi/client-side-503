@@ -22,9 +22,7 @@ export default function Park(props) {
 
     const [indvPark, setIndvPark] = useState(null)
 
-    // const [editFavorite, setEditFavorite] = useState({
-    //   email: props.currentUser.email
-    // })
+
 
     async function handleSave(e) {
       e.preventDefault()
@@ -66,6 +64,8 @@ export default function Park(props) {
           
             let images, activities, parkfullName, parkDescription, parkDirectionsInfo, parkDirectionsUrl, parkWeatherInfo, parkUrl, parkStates, renderedImages, headerImage, headerImageArray, parkCode
       
+
+      // --------- to make sure things dont load before call is finished -------------      
       if(indvPark){
 
 
