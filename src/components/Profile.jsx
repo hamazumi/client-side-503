@@ -18,20 +18,21 @@ let API_KEY = process.env.REACT_APP_API_KEY
 
 export default function Profile(props) {
 
-    async function handleDelete(e) {
-        for await (let park of message){
-        e.preventDefault()
-        // console.log('add to faves')
-        await axios.put(`http://localhost:3001/api-v1/users/park/${park}/delete`, {email : props.currentUser.email})
-       
-      }}
+    async function handleDelete(code) {
+        
+        // e.preventDefault()
+        // if(park.)
+        await axios.put(`http://localhost:3001/api-v1/users/park/${code}/delete`, {email : props.currentUser.email})
+        console.log(message)
+        setMessage(message.filter(x => x.code != code))
+      }
     
 
       
 
     // state is information from server
     const [message, setMessage] = useState([])
-   console.log("😁",message)
+//    console.log("😁",message)
 
     // hit the auth locked route on the backend
     useEffect(() => {
@@ -48,21 +49,21 @@ export default function Profile(props) {
                 // hit the auth locked endpoint
                 await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/auth-locked`, {headers: authHeaders})
                 .then((res) => {
-                    console.log(res)
+                    // console.log(res)
 
                     let ansArray = []
                     res.data.myFavs.map((fav) => {
                         ansArray.push(fav.title)
-                        console.log(fav.title)
+                        // console.log(fav.title)
                     })
-                    console.log(ansArray)
+                    // console.log(ansArray)
                         let apiAnsArray = []
                         async function favsAPICall() {
                             for await (let park of ansArray){
                                 try{
                                     await axios.get(`https://developer.nps.gov/api/v1/parks?parkCode=${park}&api_key=${API_KEY}`)
                                     .then((val) => { 
-                                        console.log(val.data.data[0].images[0].url)
+                                        // console.log(val.data.data[0].images[0].url)
                                         let ans = {fullName: val.data.data[0].fullName, description: val.data.data[0].description, code: val.data.data[0].parkCode, pic: val.data.data[0].images[0].url}
                                         apiAnsArray.push(ans)
                                     })
@@ -76,7 +77,7 @@ export default function Profile(props) {
 
                         favsAPICall()
                         setMessage(apiAnsArray)
-                        console.log(apiAnsArray)
+                        // console.log(apiAnsArray)
                         
                 })
 
@@ -129,7 +130,7 @@ export default function Profile(props) {
                                 
                                 
                                                      <div className="mt-3 mb-3">
-                                                     <Button onClick={(e) => handleDelete(e)} className="btn btn-primary btn-sm mb-2"  ><FaHeart/> &nbsp; Remove {lm.fullName} From Your Favorites</Button> 
+                                                     <Button onClick={() => handleDelete(lm.code)} className="btn btn-primary btn-sm mb-2"  ><FaHeart/> &nbsp; Remove {lm.fullName} From Your Favorites</Button> 
                             
                                                      </div>
                                                  </>
