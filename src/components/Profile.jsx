@@ -117,10 +117,10 @@ export default function Profile(props) {
                                                          </div>
                                 
                                 
-                                                     <div className="mt-3 mb-3">
+                                                     {/* <div className="mt-3 mb-3">
                                                      <Button className="btn btn-primary btn-sm mb-2"  ><FaHeart/> &nbsp; Remove {lm.fullName} From Your Favorites</Button> 
                             
-                                                     </div>
+                                                     </div> */}
                                                  </>
                                              )
                                 
