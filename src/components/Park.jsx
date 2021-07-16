@@ -20,6 +20,22 @@ import {
 
 export default function Park(props) {
 
+
+  await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/auth-locked`, {headers: authHeaders})
+  .then((res) => {
+      console.log(res)
+
+      let ansArray = []
+      console.log(res.data.myFavs)
+  })
+
+
+
+
+
+
+
+
     const [indvPark, setIndvPark] = useState(null)
 
 
