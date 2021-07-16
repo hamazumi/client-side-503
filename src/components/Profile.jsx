@@ -64,24 +64,15 @@ export default function Profile(props) {
                         
                 })
 
-
-
-
-
+            } catch (err) {
+                console.log(err)
+                    // log user out if error
+                    props.handleLogout()
+                }
             
-            
-
-
-            
-        } catch (err) {
-            console.log(err)
-                // log user out if error
-                props.handleLogout()
             }
-        
-        }
-            getPrivateMessage()
-    }, [])
+                getPrivateMessage()
+        }, [])
 
     if(!props.currentUser) return <Redirect to='/login' component= {Login} currentUser={props.currentUser} />
 
@@ -99,11 +90,6 @@ export default function Profile(props) {
             </div>
             <ul className="list-unstyled">
                 <li className="list-unstyled border-danger">
-<<<<<<< HEAD
-                        {message}
-
-                        <br/>
-=======
                         {message.map((lm) => {
                             return (
                                 <>
@@ -125,7 +111,6 @@ export default function Profile(props) {
                                              )
                                 
                             })}
->>>>>>> 412523c2e114ebdd666de9c60877009ba1014655
 
                 </li>
             </ul>
