@@ -30,10 +30,12 @@ export default function Navigation(props) {
 
 
 const Weather = () => {
+  console.log(weather)
   return(
 
     <div className="d-flex text-right justify-content-end w-100 p-3">
       <div className="text-right mr-2" style={{fontSize: '.9rem', color: '#ccc'}}>
+        
         {weather.name} weather: &nbsp;
         {weather.weather[0].description}  
         <WiDaySunny size={24} color='#ccc' /> 
