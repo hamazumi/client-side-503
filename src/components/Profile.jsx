@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import {Redirect} from "react-router-dom"
+import {Redirect, useParams} from "react-router-dom"
 import axios from "axios"
 import Login from "./Login"
 import '../App.css'
@@ -17,6 +17,11 @@ let API_KEY = process.env.REACT_APP_API_KEY
 
 
 export default function Profile(props) {
+
+
+    
+
+      
 
     // state is information from server
     const [message, setMessage] = useState([])
@@ -59,6 +64,15 @@ export default function Profile(props) {
                                 }
                             } 
                         }
+                        
+                        // async function handleDelete(e) {
+                        //     for await (let park of ansArray){
+                        //     e.preventDefault()
+                        //     // console.log('add to faves')
+                        //     await axios.put(`http://localhost:3001/api-v1/users/park/${park}/delete`, {email : props.currentUser.email})
+                           
+                        //   }}
+
                         favsAPICall()
                         setMessage(apiAnsArray)
                         
@@ -113,7 +127,7 @@ export default function Profile(props) {
                                 
                                 
                                                      <div className="mt-3 mb-3">
-                                                     <Button className="btn btn-primary btn-sm mb-2"><FaHeart/> &nbsp; Remove {lm.fullName} From Your Favorites</Button> <Button className="btn btn-primary btn-sm mb-2">Go To {lm.fullName}'s Main Page</Button> 
+                                                     <Button className="btn btn-primary btn-sm mb-2"  ><FaHeart/> &nbsp; Remove {lm.fullName} From Your Favorites</Button> <Button className="btn btn-primary btn-sm mb-2">Go To {lm.fullName}'s Main Page</Button> 
                             
                                                      </div>
                                                  </>
