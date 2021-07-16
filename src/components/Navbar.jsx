@@ -16,7 +16,7 @@ export default function Navigation(props) {
   const city = ['sitka', 'kalaupapa', 'jensen', 'patchogue']
 
   useEffect(() => {
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city[1]}&units=imperial&APPID=${API_KEY}`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city[3]}&units=imperial&APPID=${API_KEY}`)
     .then(res => res.json())
     .then(result => {
       setWeather(result);
