@@ -130,11 +130,7 @@ export default function Profile(props) {
                                 
                                 
                                                      <div className="mt-3 mb-3">
-<<<<<<< HEAD
-                                                     {/* <Button onClick={(e) => handleDelete(e)} className="btn btn-primary btn-sm mb-2"  ><FaHeart/> &nbsp; Remove {lm.fullName} From Your Favorites</Button>  */}
-=======
                                                      <Button onClick={() => handleDelete(lm.code)} className="btn btn-primary btn-sm mb-2"  ><FaHeart/> &nbsp; Remove {lm.fullName} From Your Favorites</Button> 
->>>>>>> 1a9b67a4eaa5422d363bac9a06ac945bea3b5b92
                             
                                                      </div>
                                                  </>
