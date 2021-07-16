@@ -35,33 +35,6 @@ export default function Profile(props) {
                 }
 
                 // hit the auth locked endpoint
-<<<<<<< HEAD
-                const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/auth-locked`, {headers: authHeaders})
-                
-                // setMessage(response.data.myFavs)
-                const finalMessage = response.data.myFavs.map((favs) => 
-                <>
-                   <hr/>
-                    <div className="d-flex flex-column align-items-center justify-content-start">
-
-                        <img src={kb2} height="200" width="400" alt="Visit parknameHere"/>
-                           <h3 className="mt-3">Sitka More Text Here National Park - Sitka AK</h3>
-                           
-                        </div>
-
-
-                    <div className="mt-3 mb-3">
-                    <Button className="btn btn-primary btn-sm mb-2"><FaHeart/> &nbsp; Remove Sitka National Park From Your Favorites</Button> <Button className="btn btn-primary btn-sm mb-2">Go To Sitka National Park's Main Page</Button> 
-
-                    </div>
-                    </>
-                )
-
-                setMessage(finalMessage)
-                
-            } catch (err) {
-                console.log(err)
-=======
                 await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/auth-locked`, {headers: authHeaders})
                 .then((res) => {
                     console.log(res)
@@ -102,7 +75,6 @@ export default function Profile(props) {
             
         } catch (err) {
             console.log(err)
->>>>>>> 412523c2e114ebdd666de9c60877009ba1014655
                 // log user out if error
                 props.handleLogout()
             }

@@ -57,7 +57,7 @@ function HomeLayout(props) {
 
 <div className="d-flex align-items-center text-justify">
   <div className="textboxSearch" style={{width: '500px', height: '173px', margin: '0 auto', border: '0'}}>
-    <ul className="text-decoration-none" style={{background: 'rgba(169, 143, 84, .8)', textShadow: '1px 1px 1px #7a6c4e'}}>
+    <ul className="text-decoration-none" style={{ background: 'rgba(169, 143, 84, .8)', textShadow: '1px 1px 1px #7a6c4e'}}>
     {renderParks}
     </ul>
 
