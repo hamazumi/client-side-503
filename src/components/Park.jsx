@@ -88,6 +88,7 @@ export default function Park(props) {
             parkCode = indvPark.parkCode
             activities = Object.values(indvPark.activities).map((park, index) => <span key={index}> {park.name} |</span>)
           //  console.log(typeof indvPark.activities)
+          console.log(indvPark.Passes.[0].cost)
           parkfullName = (
               <>
               <p>{indvPark.fullName}</p>
