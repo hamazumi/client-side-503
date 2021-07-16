@@ -62,7 +62,8 @@ export default function Profile(props) {
                                 try{
                                     await axios.get(`https://developer.nps.gov/api/v1/parks?parkCode=${park}&api_key=${API_KEY}`)
                                     .then((val) => { 
-                                        let ans = {fullName: val.data.data[0].fullName, description: val.data.data[0].description, code: val.data.data[0].parkCode}
+                                        console.log(val.data.data[0].images[0].url)
+                                        let ans = {fullName: val.data.data[0].fullName, description: val.data.data[0].description, code: val.data.data[0].parkCode, pic: val.data.data[0].images[0].url}
                                         apiAnsArray.push(ans)
                                     })
                                 } catch(err){
@@ -120,7 +121,7 @@ export default function Profile(props) {
                                                                      <hr/>
                                                      <div className="d-flex flex-column align-items-center justify-content-start">
                                 
-                                                         <img src={kb2} height="200" width="400" alt="Visit parknameHere"/>
+                                                         <img src={lm.pic} height="200" width="400" alt="Visit parknameHere"/>
                                                             <Link to={`/park/${lm.code}`}><h3 className="mt-3"> {lm.fullName}</h3></Link>
                                    <p> {lm.description} </p>
                                 
