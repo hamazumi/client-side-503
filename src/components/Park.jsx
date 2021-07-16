@@ -22,37 +22,21 @@ export default function Park(props) {
 
     const [indvPark, setIndvPark] = useState(null)
 
-    const [editFavorite, setEditFavorite] = useState({
-      email: props.currentUser.email
-    })
+    // const [editFavorite, setEditFavorite] = useState({
+    //   email: props.currentUser.email
+    // })
 
     async function handleSave(e) {
       e.preventDefault()
       // console.log('add to faves')
-      await axios.put(`http://localhost:3001/api-v1/users/park/${id}/add`, editFavorite)
-      .then(
-        (res) => {
-          // console.log('im working!')
-          console.log(res)
-          res.Redirect('/profile')
-        }
-        
-      )
-      .catch((err) =>  console.log(err))
-      // console.log('add to favorites')
+      await axios.put(`http://localhost:3001/api-v1/users/park/${id}/add`, {email : props.currentUser.email})
     }
 
     async function handleDelete(e) {
       e.preventDefault()
       // console.log('add to faves')
-      await axios.put(`http://localhost:3001/api-v1/users/park/${id}/delete`, editFavorite)
-      .then(
-        (res) => {
-          // console.log('im working!')
-          console.log(res)
-        }
-      )
-      // console.log('add to favorites')
+      await axios.put(`http://localhost:3001/api-v1/users/park/${id}/delete`, {email : props.currentUser.email})
+     
     }
 
     const {id} = useParams()
