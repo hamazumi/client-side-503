@@ -18,7 +18,13 @@ let API_KEY = process.env.REACT_APP_API_KEY
 
 export default function Profile(props) {
 
-
+    async function handleDelete(e) {
+        for await (let park of message){
+        e.preventDefault()
+        // console.log('add to faves')
+        await axios.put(`http://localhost:3001/api-v1/users/park/${park}/delete`, {email : props.currentUser.email})
+       
+      }}
     
 
       
@@ -65,16 +71,11 @@ export default function Profile(props) {
                             } 
                         }
                         
-                        // async function handleDelete(e) {
-                        //     for await (let park of ansArray){
-                        //     e.preventDefault()
-                        //     // console.log('add to faves')
-                        //     await axios.put(`http://localhost:3001/api-v1/users/park/${park}/delete`, {email : props.currentUser.email})
-                           
-                        //   }}
+                        
 
                         favsAPICall()
                         setMessage(apiAnsArray)
+                        console.log(apiAnsArray)
                         
                 })
 
@@ -127,7 +128,7 @@ export default function Profile(props) {
                                 
                                 
                                                      <div className="mt-3 mb-3">
-                                                     <Button className="btn btn-primary btn-sm mb-2"  ><FaHeart/> &nbsp; Remove {lm.fullName} From Your Favorites</Button> 
+                                                     <Button onClick={(e) => handleDelete(e)} className="btn btn-primary btn-sm mb-2"  ><FaHeart/> &nbsp; Remove {lm.fullName} From Your Favorites</Button> 
                             
                                                      </div>
                                                  </>
