@@ -100,7 +100,7 @@ function App() {
           {/* eventually we will do a condintional render here */}
           <Route 
             path="/profile"
-            render={ props => currentUser ? <Profile {...props} currentUser={ currentUser } setCurrentUser={ setCurrentUser } handleLogout={handleLogout}/> : <Redirect to="/login"/> }
+            render={ props => currentUser ? <Profile {...props} results={results} currentUser={ currentUser } setCurrentUser={ setCurrentUser } handleLogout={handleLogout}/> : <Redirect to="/login"/> }
           />
 
           <Route 
