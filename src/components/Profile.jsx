@@ -38,78 +38,49 @@ export default function Profile(props) {
                 await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/auth-locked`, {headers: authHeaders})
                 .then((res) => {
                     console.log(res)
+
+                    let ansArray = []
                     res.data.myFavs.map((fav) => {
-                         axios.get(`https://developer.nps.gov/api/v1/parks?parkCode=${fav.title}&api_key=${API_KEY}`)
-                        .then((val) => {
-                            if(val.data.data[0] != undefined){
-                                console.log(`😎`,[...message])
-                                let newFav = [...message, {fullName: val.data.data[0].fullName, description: val.data.data[0].description}]
-                                console.log(newFav)
-                                setMessage(newFav)
-                                // setMessage(message.push({fullName: val.data.data[0].fullName, description: val.data.data[0].description}))
-                                
-                            }
-                        })
+                        ansArray.push(fav.title)
+                        console.log(fav.title)
                     })
+                    console.log(ansArray)
+                        let apiAnsArray = []
+                        async function favsAPICall() {
+                            for await (let park of ansArray){
+                                try{
+                                    await axios.get(`https://developer.nps.gov/api/v1/parks?parkCode=${park}&api_key=${API_KEY}`)
+                                    .then((val) => { 
+                                        let ans = {fullName: val.data.data[0].fullName, description: val.data.data[0].description}
+                                        apiAnsArray.push(ans)
+                                    })
+                                } catch(err){
+                                    console.log(err)
+                                }
+                            } 
+                        }
+                        favsAPICall()
+                        setMessage(apiAnsArray)
+                        
                 })
 
-                //     const parkFavsData = res.data.myFavs.map((favs) => {
-                //         axios.get(`https://developer.nps.gov/api/v1/parks?parkCode=${favs.title}&api_key=${API_KEY}`)
-                //         .then((res2) => {
-                //             console.log(res2.data.data[0].fullName)
-                //         }
-                //         )
-                //         // // console.log(info.data.data[0].fullName)
-                //         // return {fullName: info.data.data[0].fullName,
-                //         //     description: info.data.data[0].description}
-                //     })
-                
-//<<<<<<< main
-//                 // setMessage(response.data.myFavs)
-//                 const finalMessage = parkFavsData.map((favs) => 
-//                 <>
-//                                     <hr/>
-//                     <div className="d-flex flex-column align-items-center justify-content-start">
-
-//                         <img src={kb2} height="200" width="400" alt="Visit parknameHere"/>
-//                            <h3 className="mt-3"> {favs.fullName}</h3>
-                            //   <p> {favs.description} </p>
-                           
-//                         </div>
 
 
-//                     <div className="mt-3 mb-3">
-//                     <Button className="btn btn-primary btn-sm mb-2"><FaHeart/> &nbsp; Remove Sitka National Park From Your Favorites</Button> <Button className="btn btn-primary btn-sm mb-2">Go To Sitka National Park's Main Page</Button> 
 
-//                     </div>
-//                     </>
-//                 )
 
-//                 setMessage(finalMessage)
-//=======
-                    
-                //     // // setMessage(response.data.myFavs)
-                //     const finalMessage = parkFavsData.map((favs) => 
-    
-                    
-                //         <p>
-                             
-                //             {favs.fullName}
-                //             {favs.description}
-                //         </p>
-                //     )
-                // })
-//>>>>>>> main
-                
+            
+            
 
-            } catch (err) {
-                console.log(err)
+
+            
+        } catch (err) {
+            console.log(err)
                 // log user out if error
                 props.handleLogout()
             }
+        
         }
-        getPrivateMessage()
-
+            getPrivateMessage()
     }, [])
 
     if(!props.currentUser) return <Redirect to='/login' component= {Login} currentUser={props.currentUser} />
@@ -130,12 +101,24 @@ export default function Profile(props) {
                 <li className="list-unstyled border-danger">
                         {message.map((lm) => {
                             return (
-                                <div>
-
-                                    <p>{lm.fullName}</p>
-                                    <p>{lm.description}</p>
-                                </div>
-                                )
+                                <>
+                                                                     <hr/>
+                                                     <div className="d-flex flex-column align-items-center justify-content-start">
+                                
+                                                         <img src={kb2} height="200" width="400" alt="Visit parknameHere"/>
+                                                            <h3 className="mt-3"> {lm.fullName}</h3>
+                                   <p> {lm.description} </p>
+                                
+                                                         </div>
+                                
+                                
+                                                     <div className="mt-3 mb-3">
+                                                     <Button className="btn btn-primary btn-sm mb-2"><FaHeart/> &nbsp; Remove {lm.fullName} From Your Favorites</Button> <Button className="btn btn-primary btn-sm mb-2">Go To {lm.fullName}'s Main Page</Button> 
+                            
+                                                     </div>
+                                                 </>
+                                             )
+                                
                             })}
 
                 </li>
