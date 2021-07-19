@@ -48,7 +48,7 @@ export default function ActivityPage(props) {
 
     return(
         <div>
-            <a href="/Activities">All Activities</a>
+            <Link to="/Activities">All Activities</Link>
             <h1>{id}</h1>
             {filteredActivities}
 
