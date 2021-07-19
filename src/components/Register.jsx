@@ -1,13 +1,16 @@
 import { useState } from "react"
 import axios from 'axios'
 import jwt from "jsonwebtoken"
-import { Redirect } from "react-router-dom"
+import { Redirect, Link } from "react-router-dom"
 import Profile from "./Profile"
+import {Form, Button, Container, Row, Col, Jumbotron} from 'react-bootstrap'
+
 
 
 
 
 export default function Register(props) {
+    console.log("😎", process.env.REACT_APP_SERVER_URL)
     // state for the controlled form
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
@@ -51,7 +54,6 @@ export default function Register(props) {
         }
         
         
-        
         console.log('submit the form')
     }
 
@@ -59,7 +61,60 @@ export default function Register(props) {
     if(props.currentUser) return <Redirect to='/profile' component={Profile} currentUser={props.currentUser} />
     return(
         <div>
-            <h3>Regristration form: </h3>
+             <Container className="mt-5">
+           <Row>
+               <Col md={{span: 7, offset: 3}}>
+                   <Jumbotron>
+                       <h3>Create your free account</h3>
+                       <p>{message}</p>
+                       <Form onSubmit={handleSubmit}>
+                           <Form.Group>
+                               <Form.Row>
+                                   <Col>
+                                   <Form.Control
+                                   id="name-input"
+                                   type="text"
+                                   placeholder="Name"
+                                   onChange={e => setName(e.target.value)}
+                                   value={name}></Form.Control>
+                                   </Col>
+                               </Form.Row>
+                               <Form.Row>
+                                   <Col>
+                                   <Form.Control
+                                   id="email-input"
+                                   type="email"
+                                   placeholder="Email"
+                                   onChange={e => setEmail(e.target.value)}
+                                   value={email}></Form.Control>
+                                   </Col>
+                               </Form.Row>
+                               <Form.Row>
+                                   <Col>
+                                   <Form.Control
+                                   id="password-input"
+                                   type="password"
+                                   placeholder="Password"
+                                   onChange={e => setPassword(e.target.value)}
+                                   value={password}></Form.Control>
+                                   </Col>
+                               </Form.Row>
+                               <Button type='submit' className='mt-5 mb-3'>Sign up</Button>
+                               <Row>
+                                   <Col>
+                                   <p>Already have an account? <Link to='/login'>Log in</Link></p>
+                                   </Col>
+                               </Row>
+                               
+
+                           </Form.Group>
+                       </Form>
+
+                   </Jumbotron>
+               </Col>
+           </Row>
+       </Container>
+            {/* <h3>Regristration form: </h3>
 
             <p>{message}</p>
 
@@ -96,7 +151,7 @@ export default function Register(props) {
                     type='submit'
                     value='make new account'
                 />
-            </form>
+            </form> */}
 
         </div>
     )

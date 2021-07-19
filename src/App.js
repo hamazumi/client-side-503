@@ -1,9 +1,16 @@
 import './App.css';
-import Navbar from './components/Navbar.jsx'
+import axios from 'axios'
+import Navigation from './components/Navbar.jsx'
 import Login from './components/Login.jsx'
 import Register from './components/Register.jsx'
 import Profile from './components/Profile.jsx'
-import Welcome from './components/Welcome.jsx'
+
+import ParkResult from './components/ParkResult.jsx'
+import Park from './components/Park.jsx'
+import HomeLayout from './components/HomeLayout.jsx'
+import Activities from './components/Activities.jsx'
+import ActivityPage from './components/ActivityPage.jsx'
+
 
 import {
   BrowserRouter as Router,
@@ -18,6 +25,8 @@ import {
 } from 'react'
 
 import jwt from 'jsonwebtoken'
+
+let API_KEY = process.env.REACT_APP_API_KEY
 
 function App() {
   // state holds user data if the user is logged in
@@ -47,17 +56,35 @@ function App() {
     }
   }
 
+  const [results, setResults] = useState([])
+
+    useEffect (() => {
+      async function getPost() {
+        try{
+          const response = await axios.get(`https://developer.nps.gov/api/v1/parks?limit=600&api_key=${API_KEY}`)
+          setResults(response.data.data)
+          
+          console.log(response.data)
+        } catch (err) {
+          console.log(err)
+        }
+      }
+      getPost()
+    }, [])
+
+
+
   return (
     <Router>
       <header>
-        <Navbar  currentUser={ currentUser } handleLogout={ handleLogout }/>
+        <Navigation  currentUser={ currentUser } handleLogout={ handleLogout }/>
       </header>
 
       <div className="App">
         <Switch>
           <Route 
             exact path="/"
-            component={Welcome}
+            render={() => <HomeLayout results={results} setResults={setResults}/>}
           />
 
           <Route 
@@ -73,8 +100,26 @@ function App() {
           {/* eventually we will do a condintional render here */}
           <Route 
             path="/profile"
-            render={ props => currentUser ? <Profile {...props} currentUser={ currentUser } setCurrentUser={ setCurrentUser } handleLogout={handleLogout}/> : <Redirect to="/login"/> }
+            render={ props => currentUser ? <Profile {...props} results={results} currentUser={ currentUser } setCurrentUser={ setCurrentUser } handleLogout={handleLogout}/> : <Redirect to="/login"/> }
           />
+
+          <Route 
+            path="/results"
+            render={() => <ParkResult results={results} />}
+          />
+          <Route 
+            exact path="/park/:id"
+            render={props => <Park results={results} {...props} currentUser={ currentUser } setCurrentUser={ setCurrentUser }/>}
+          />
+          <Route 
+            exact path="/activities"
+            render={() => <Activities results={results} />}
+          />
+          <Route 
+            exact path="/activities/:id"
+            render={() => <ActivityPage results={results} />}
+          />
+          
         </Switch>
       </div>
     </Router>
