@@ -80,7 +80,7 @@ function HomeLayout(props) {
       Sitka National Historical Park
       <span className="font-weight-light font-italic"> &mdash; Sitka, AK</span> 
       </p>
-    <Link variant="primary" size="sm"  to={'park/sitk'}>Visit Sitka National Historical Park</Link>
+    <Button variant="primary" size="sm" onClick={(e) => {e.preventDefault(); window.location.href='park/sitk';}}>Visit Sitka National Historical Park</Button>
     </Card.Body>
     </Card>
     {/* Card end */}
@@ -91,7 +91,7 @@ function HomeLayout(props) {
         <p>
         Kalaupapa Historical Park<span className="font-weight-light font-italic"> &mdash; Kalaupapa, Hawaii</span> 
         </p>
-        <Link variant="primary" size="sm"  to={'park/kala'}>Visit Kalaupapa Historical Park</Link>
+        <Button variant="primary" size="sm" onClick={(e) => {e.preventDefault(); window.location.href='park/kala';}}>Visit Kalaupapa Historical Park</Button>
       </Card.Body>
     </Card>
     {/* Card end */}
@@ -102,7 +102,7 @@ function HomeLayout(props) {
         <p>
         Dinosaur National Monument<span className="font-weight-light font-italic"> &mdash; Jensen, UT</span> 
         </p>
-        <Link variant="primary" size="sm"  to={'park/dino'}>Visit Dinosaur National Monument</Link>
+        <Button variant="primary" size="sm" onClick={(e) => {e.preventDefault(); window.location.href='park/dino';}}>Visit Dinosaur National Monument</Button>
       </Card.Body>
     </Card>
     {/* Card end */}
@@ -114,7 +114,7 @@ function HomeLayout(props) {
         <p>
         Fire Island National<span className="font-weight-light font-italic"> &mdash; Patchogue, NY</span> 
         </p>
-        <Button variant="primary" size="sm" to={'park/fiis'}>Visit Fire Island National Seashore</Button>
+        <Button variant="primary" size="sm" onClick={(e) => {e.preventDefault(); window.location.href='park/fiis';}}>Visit Fire Island National Seashore</Button>
       </Card.Body>
     </Card>
     {/* Card end */}

@@ -38,7 +38,7 @@ export default function Login(props) {
         }
         const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/login`, requestBody)
         
-        console.log(response.data, '🎈🎈🎈🎈🎈🎈🎈🎈')
+        console.log(response.data)
         // destructure the response
         const { token } = response.data 
         console.log(token)
