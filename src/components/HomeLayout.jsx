@@ -72,37 +72,52 @@ function HomeLayout(props) {
       <h3 className="pt-2 text-secondary">Popular Parks</h3>
     </div>
     <div className="row">
-      {/* Card */}
-      <Card style={{ width: '25%' }}>
-      <img height="150px" variant="top" className="rounded" style={{borderRadius: '35px', boxShadow: "5px 5px 5px lightgray", overflow: 'hidden'}} src={kb2} />
-      <Card.Body>
-      <p>
-      Sitka National Historical Park
-      <span className="font-weight-light font-italic"> &mdash; Sitka, AK</span> 
-      </p>
-    <Button variant="primary" size="sm" onClick={(e) => {e.preventDefault(); window.location.href='park/sitk';}}>Visit Sitka National Historical Park</Button>
-    </Card.Body>
-    </Card>
-    {/* Card end */}
+
+
+        {/* Card */}
+        <Card style={{ width: '25%' }}>
+          <img height="150px" variant="top" className="rounded" style={{borderRadius: '35px', boxShadow: "5px 5px 5px lightgray", overflow: 'hidden'}} src={kb2} />
+          <Card.Body>
+            <p>
+              Sitka National Historical Park
+              <span className="font-weight-light font-italic"> &mdash; Sitka, AK</span> 
+            </p>
+
+          <Link to='park/sitk'>
+              <Button variant="primary" size="sm"  >Visit Sitka National Historical Park</Button>
+           </Link>
+            </Card.Body>
+          </Card>
+          {/* Card end */}
+
+
     {/* Card */}
     <Card style={{ width: '25%' }}>
-    <img height="150px" variant="top" className="rounded" style={{borderRadius: '35px', boxShadow: "5px 5px 5px lightgray"}} src={iv1} />
-      <Card.Body>
-        <p>
-        Kalaupapa Historical Park<span className="font-weight-light font-italic"> &mdash; Kalaupapa, Hawaii</span> 
-        </p>
-        <Button variant="primary" size="sm" onClick={(e) => {e.preventDefault(); window.location.href='park/kala';}}>Visit Kalaupapa Historical Park</Button>
-      </Card.Body>
+      <img height="150px" variant="top" className="rounded" style={{borderRadius: '35px', boxShadow: "5px 5px 5px lightgray"}} src={iv1} />
+        <Card.Body>
+          <p>
+           Kalaupapa Historical Park<span className="font-weight-light font-italic"> &mdash; Kalaupapa, Hawaii</span> 
+          </p>
+
+        <Link to='park/kala'> 
+          <Button variant="primary" size="sm"  >Visit Kalaupapa Historical Park</Button>
+          </Link>
+        </Card.Body>
     </Card>
     {/* Card end */}
+
+
     {/* Card */}
       <Card style={{ width: '25%' }}>
         <img height="150px" variant="top" className="rounded" style={{borderRadius: '35px', boxShadow: "5px 5px 5px lightgray"}} src={ec1} />
         <Card.Body className="mb-2">
-        <p>
-        Dinosaur National Monument<span className="font-weight-light font-italic"> &mdash; Jensen, UT</span> 
-        </p>
-        <Button variant="primary" size="sm" onClick={(e) => {e.preventDefault(); window.location.href='park/dino';}}>Visit Dinosaur National Monument</Button>
+          <p>
+            Dinosaur National Monument<span className="font-weight-light font-italic"> &mdash; Jensen, UT</span> 
+          </p>
+
+      <Link to='park/dino'>
+        <Button variant="primary" size="sm">Visit Dinosaur National Monument</Button>
+        </Link>
       </Card.Body>
     </Card>
     {/* Card end */}
@@ -112,9 +127,12 @@ function HomeLayout(props) {
       <img height="150px" variant="top" className="rounded" style={{borderRadius: '35px', boxShadow: "5px 5px 5px lightgray"}} src={nf1} />
       <Card.Body>
         <p>
-        Fire Island National<span className="font-weight-light font-italic"> &mdash; Patchogue, NY</span> 
+          Fire Island National<span className="font-weight-light font-italic"> &mdash; Patchogue, NY</span> 
         </p>
-        <Button variant="primary" size="sm" onClick={(e) => {e.preventDefault(); window.location.href='park/fiis';}}>Visit Fire Island National Seashore</Button>
+
+      <Link to='park/fiis'>
+        <Button variant="primary" size="sm" >Visit Fire Island National Seashore</Button>
+        </Link>
       </Card.Body>
     </Card>
     {/* Card end */}
@@ -124,34 +142,34 @@ function HomeLayout(props) {
   <div className="container">
   <div className="row mt-4">
   <div className="col-sm text-center link-primary">
-    <a href="/activities/Hiking">
+    <Link to="/activities/Hiking">
     <img src={hiking} width="150" height="150" className="rounded-circle" />
     <p className="pt-3">Hiking</p> 
-    </a>
+    </Link>
   </div>
   <div className="col-sm text-center">
-    <a href="/activities/Fishing">
+    <Link to="/activities/Fishing">
     <img src={fishing} width="150" height="150" className="rounded-circle" />
     <p className="pt-3">Fishing</p>
-    </a>
+    </Link>
   </div>
   <div className="col-sm text-center">
-    <a className="activities" href="/activities/Mountain%20Biking">
+    <Link className="activities" to="/activities/Mountain%20Biking">
     <img src={mountainBiking} width="150" height="150" className="rounded-circle" />
     <p className="pt-3">Mountain Biking</p>
-    </a>
+    </Link>
   </div>
   <div className="col-sm text-center">
-    <a href="/activities/Birdwatching">
+    <Link to="/activities/Birdwatching">
     <img src={birdWatching} width="150" height="150" className="rounded-circle" />
     <p className="pt-3">Bird Watching</p>
-    </a>
+    </Link>
   </div>
   <div className="col-sm text-center">
-  <a href="/activities/Backpacking">
+  <Link to="/activities/Backcountry%20Hiking">
     <img src={backpacking} width="150" height="150" className="rounded-circle" />
-    <p className="pt-3">Backpacking</p>
-    </a>
+    <p className="pt-3">Backcountry Hiking</p>
+    </Link>
   </div>
   </div>
   <div className="bg-light small text-right text-muted" style={{height: '50px', padding: '10px'}}>&copy; 2021 - Park Hopper</div>
