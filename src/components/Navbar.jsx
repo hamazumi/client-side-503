@@ -5,6 +5,7 @@ import { WiDaySunny, WiStrongWind } from 'weather-icons-react';
 import { useState, useEffect } from 'react'
 import React, { Component } from 'react';
 import '../App.css'
+import {Link, useHistory} from 'react-router-dom'
 
 const API_KEY = process.env.REACT_APP_WEATHER_API_KEY
 
@@ -53,8 +54,8 @@ const Weather = () => {
     <>
       <Navbar bg="dark" variant="dark">    
         <Nav>
-          <Nav.Link href="/" style={{borderRight: '3px solid #454e56', paddingRight: '30px'}}><img src={logoMain} /></Nav.Link>
-          <Nav.Link style={{marginTop: '20px', paddingLeft: '30px'}} href="/profile"><FaHeart/></Nav.Link><div style={{marginTop: '28px', paddingLeft: '20px', color: '#454e54'}}>|</div><Nav.Link style={{marginTop: '20px', paddingLeft: '30px'}} href="/"><span onClick={props.handleLogout}>Logout</span></Nav.Link>
+          <Link className="nav-link" to="/" style={{borderRight: '3px solid #454e56', paddingRight: '30px'}}><img src={logoMain} /></Link>
+          <Link className="nav-link" style={{marginTop: '20px', paddingLeft: '30px'}} to="/profile"><FaHeart/></Link><div style={{marginTop: '28px', paddingLeft: '20px', color: '#454e54'}}>|</div><Link className="nav-link" style={{marginTop: '20px', paddingLeft: '30px'}} to="/"><span onClick={props.handleLogout}>Logout</span></Link>
         </Nav>
         {weather ? <Weather/> : ''}
       </Navbar>
@@ -65,8 +66,9 @@ const Weather = () => {
     <>
       <Navbar bg="dark" variant="dark" >
         <Nav className="mr-auto justify-content-end">
-          <Nav.Link href="/" style={{borderRight: '3px solid #454e56', paddingRight: '30px'}}><img src={logoMain} /></Nav.Link>
-          <Nav.Link style={{marginTop: '20px', paddingLeft: '30px', width: '95px'}} href="/login">Log in</Nav.Link><span style={{marginTop: '28px', paddingLeft: '10px', color: '#454e54'}}>|</span><Nav.Link style={{marginTop: '20px', paddingLeft: '20px'}} href="/register">Register</Nav.Link>
+          <Link className="nav-link" to="/" style={{borderRight: '3px solid #454e56', paddingRight: '30px'}}><img src={logoMain} /></Link>
+          <Link className="nav-link" style={{marginTop: '20px', paddingLeft: '30px', width: '95px'}} to="/login">Log in</Link><span style={{marginTop: '28px', paddingLeft: '10px', color: '#454e54'}}>|</span><Link className="nav-link" style={{marginTop: '20px', paddingLeft: '20px'}} to="/register">Register</Link>
+         
         </Nav>
 
         {weather ? <Weather/> : ''}
